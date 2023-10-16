@@ -77,6 +77,9 @@
 					"secureInput": false
 				},
 				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Users/nishadin-im18054@stu.kln.ac.lk/Untitled Notebook 2023-10-16 22:49:27"
+				},
 				"linkedServiceName": {
 					"referenceName": "AzureDatabricks1",
 					"type": "LinkedServiceReference"
