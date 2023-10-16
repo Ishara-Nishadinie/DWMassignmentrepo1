@@ -58,9 +58,17 @@
 				]
 			},
 			{
-				"name": "Notebook1",
+				"name": "Transform",
+				"description": "Transform activity",
 				"type": "DatabricksNotebook",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Copy_5j6",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
