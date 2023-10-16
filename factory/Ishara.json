@@ -1,0 +1,9 @@
+{
+	"name": "Ishara",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "2266f363-4178-4c3a-b65a-d00d15516bf5",
+		"tenantId": "aa232db2-7a78-4414-a529-33db9124cba7"
+	}
+}
