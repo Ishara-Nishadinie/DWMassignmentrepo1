@@ -978,7 +978,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "AzureSqlTableOrderFact",
+						"referenceName": "AzureSqlTableBridgeOrderSuppier",
 						"type": "DatasetReference"
 					}
 				]
