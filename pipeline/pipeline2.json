@@ -705,6 +705,11 @@
 								}
 							},
 							{
+								"source": {
+									"name": "Unit cost (USD)",
+									"type": "String",
+									"physicalType": "String"
+								},
 								"sink": {
 									"name": "Unit_Cost",
 									"type": "Decimal",
