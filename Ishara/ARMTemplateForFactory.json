@@ -78,12 +78,157 @@
 								"type": "AzureSqlSink",
 								"writeBehavior": "insert",
 								"sqlWriterUseTableLock": false,
-								"tableOption": "autoCreate",
 								"disableMetricsCollection": false
 							},
 							"enableStaging": false,
 							"translator": {
 								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"name": "Customer",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Customer",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "Season",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Season",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "Category",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Category",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "Product Type",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "ProductType",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "Style Code",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "StyleCode",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "Development Type",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "DevelopmentType",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "Sizes",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Sizes",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "Active",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Active",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "Status",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "Status",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "Order Received Date",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "OrderReceivedDate",
+											"type": "DateTime",
+											"physicalType": "datetime"
+										}
+									},
+									{
+										"source": {
+											"name": "Responsible Person",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "ResponsiblePerson",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "Order Modified Date",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "OrderModifiedDate",
+											"type": "DateTime",
+											"physicalType": "datetime"
+										}
+									}
+								],
 								"typeConversion": true,
 								"typeConversionSettings": {
 									"allowDataTruncation": true,
