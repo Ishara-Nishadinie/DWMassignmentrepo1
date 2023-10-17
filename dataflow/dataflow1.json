@@ -14,7 +14,11 @@
 				}
 			],
 			"sinks": [],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "derivedColumn1"
+				}
+			],
 			"scriptLines": [
 				"source(output(",
 				"          Customer as string,",
@@ -26,7 +30,7 @@
 				"          Sizes as string,",
 				"          Active as string,",
 				"          Status as string,",
-				"          {Order Received Date} as date 'dd-MM-yyyy',",
+				"          {Order Received Date} as string,",
 				"          {Responsible Person} as string,",
 				"          {Order Modified Date} as string",
 				"     ),",
@@ -34,7 +38,8 @@
 				"     validateSchema: true,",
 				"     inferDriftedColumnTypes: true,",
 				"     limit: 100,",
-				"     ignoreNoFilesFound: true) ~> source"
+				"     ignoreNoFilesFound: true) ~> source",
+				"source derive() ~> derivedColumn1"
 			]
 		}
 	}
