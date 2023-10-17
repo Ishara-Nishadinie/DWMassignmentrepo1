@@ -18,7 +18,7 @@
 					"name": "selectcolumns"
 				},
 				{
-					"name": "surrogateKey1"
+					"name": "CustomerSKStream"
 				}
 			],
 			"scriptLines": [
@@ -44,9 +44,9 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> selectcolumns",
-				"selectcolumns keyGenerate(output({undefined} as long),",
+				"selectcolumns keyGenerate(output(Customer_SK as long),",
 				"     startAt: 1L,",
-				"     stepValue: 1L) ~> surrogateKey1"
+				"     stepValue: 1L) ~> CustomerSKStream"
 			]
 		}
 	}
