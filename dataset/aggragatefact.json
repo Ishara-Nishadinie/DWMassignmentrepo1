@@ -1,0 +1,37 @@
+{
+	"name": "aggragatefact",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "aggragatefactblobstorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "DataSet - Aggregate_Fact_Table.csv",
+				"folderPath": "input",
+				"container": "datafactory"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Order_Id",
+				"type": "String"
+			},
+			{
+				"name": "Customer_Id",
+				"type": "String"
+			},
+			{
+				"name": "Total (USD)",
+				"type": "String"
+			}
+		]
+	}
+}
