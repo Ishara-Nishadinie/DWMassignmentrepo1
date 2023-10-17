@@ -12,7 +12,11 @@
 					"name": "source1"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"name": "CustomerSink"
+				}
+			],
 			"transformations": [
 				{
 					"name": "selectcolumns"
@@ -46,7 +50,11 @@
 				"     skipDuplicateMapOutputs: true) ~> selectcolumns",
 				"selectcolumns keyGenerate(output(Customer_SK as long),",
 				"     startAt: 1L,",
-				"     stepValue: 1L) ~> CustomerSKStream"
+				"     stepValue: 1L) ~> CustomerSKStream",
+				"CustomerSKStream sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> CustomerSink"
 			]
 		}
 	}
