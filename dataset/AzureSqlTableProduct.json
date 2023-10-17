@@ -1,0 +1,51 @@
+{
+	"name": "AzureSqlTableProduct",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabaseProduct",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Product_Id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Product_SK",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Fabric_Type",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Size_Range",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Color",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Category",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Unit_Cost",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Product"
+		}
+	}
+}

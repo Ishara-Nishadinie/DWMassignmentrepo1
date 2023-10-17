@@ -470,26 +470,100 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "Status_SK",
+									"name": "Product_Id",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "Status_SK",
+									"name": "Product_Id",
 									"type": "String",
 									"physicalType": "nvarchar"
 								}
 							},
 							{
 								"source": {
-									"name": "Order_status",
+									"name": "Product_SK",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "Order_Status",
+									"name": "Product_SK",
 									"type": "String",
 									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Name",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Name",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Fabric_Type",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Fabric_Type",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Size_Range",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Size_Range",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Color",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Color",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Category",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Category",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Unit_Cost($)",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Unit_Cost",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 10
 								}
 							}
 						],
@@ -508,7 +582,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "AzureSqlJunk",
+						"referenceName": "AzureSqlTableProduct",
 						"type": "DatasetReference"
 					}
 				]
