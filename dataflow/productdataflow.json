@@ -1,5 +1,5 @@
 {
-	"name": "dataflow1",
+	"name": "productdataflow",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
@@ -12,7 +12,11 @@
 					"name": "source1"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"name": "sink1"
+				}
+			],
 			"transformations": [
 				{
 					"name": "selectcolumns"
@@ -50,7 +54,11 @@
 				"     skipDuplicateMapOutputs: true) ~> selectcolumns",
 				"selectcolumns keyGenerate(output(Product_SK as long),",
 				"     startAt: 1L,",
-				"     stepValue: 1L) ~> ProductSKStream"
+				"     stepValue: 1L) ~> ProductSKStream",
+				"ProductSKStream sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
 			]
 		}
 	}
