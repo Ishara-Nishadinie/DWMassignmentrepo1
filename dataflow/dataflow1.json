@@ -5,14 +5,33 @@
 		"typeProperties": {
 			"sources": [
 				{
-					"name": "source1"
+					"dataset": {
+						"referenceName": "csvdataset1",
+						"type": "DatasetReference"
+					},
+					"name": "source"
 				}
 			],
 			"sinks": [],
 			"transformations": [],
 			"scriptLines": [
-				"source(allowSchemaDrift: true,",
-				"     validateSchema: false) ~> source1"
+				"source(output(",
+				"          Customer as string,",
+				"          Season as string,",
+				"          Category as string,",
+				"          {Product Type} as string,",
+				"          {Style Code} as string,",
+				"          {Development Type} as string,",
+				"          Sizes as string,",
+				"          Active as string,",
+				"          Status as string,",
+				"          {Order Received Date} as string,",
+				"          {Responsible Person} as string,",
+				"          {Order Modified Date} as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source"
 			]
 		}
 	}
