@@ -1,0 +1,52 @@
+{
+	"name": "AzureSqlTableOrderFact",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabaseOrderfact",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Order_Id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Product_SK",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Customer_SK",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Order_Date_SK",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Order_Suppliers_SK",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Status_SK",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Quantity",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Unit_Cost",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "OrderFact"
+		}
+	}
+}
