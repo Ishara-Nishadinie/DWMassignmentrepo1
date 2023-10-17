@@ -930,7 +930,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "dataflow1",
+						"referenceName": "supplierdataflow",
 						"type": "DataFlowReference"
 					},
 					"compute": {
