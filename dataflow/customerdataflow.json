@@ -72,7 +72,15 @@
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     errorHandlingOption: 'stopOnFirstError') ~> CustomerSink"
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          Customer_SK,",
+				"          Customer_ID = Customer_Id,",
+				"          Name,",
+				"          Region,",
+				"          Country,",
+				"          Type",
+				"     )) ~> CustomerSink"
 			]
 		}
 	}
