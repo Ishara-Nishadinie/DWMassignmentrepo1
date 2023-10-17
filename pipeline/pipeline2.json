@@ -290,74 +290,50 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "Supplier_SK",
+									"name": "Date_Key",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "Supplier_SK",
+									"name": "Date_Key",
 									"type": "String",
 									"physicalType": "nvarchar"
 								}
 							},
 							{
 								"source": {
-									"name": "Supplier_Code",
+									"name": "Order_Date",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "Supplier_Code",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "Order_Date",
+									"type": "DateTime",
+									"physicalType": "date"
 								}
 							},
 							{
 								"source": {
-									"name": "Name",
+									"name": "Estimated_Order_Finish_Date",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "Name",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "Estimated_Order_Finish_Date",
+									"type": "DateTime",
+									"physicalType": "date"
 								}
 							},
 							{
 								"source": {
-									"name": "Region",
+									"name": "Order_Finish_Date",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "Region",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Country",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Country",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Type",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Type",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "Order_Finish_Date",
+									"type": "DateTime",
+									"physicalType": "date"
 								}
 							}
 						],
