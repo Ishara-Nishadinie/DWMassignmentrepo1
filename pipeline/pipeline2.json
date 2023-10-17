@@ -256,7 +256,7 @@
 				]
 			},
 			{
-				"name": "data",
+				"name": "datedata",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -370,7 +370,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "csvsupplier",
+						"referenceName": "csvdate",
 						"type": "DatasetReference"
 					}
 				],
