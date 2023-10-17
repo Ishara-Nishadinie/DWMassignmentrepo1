@@ -1,0 +1,12 @@
+{
+	"name": "AzureSqlCustomer",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabaseCustomer",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	}
+}
