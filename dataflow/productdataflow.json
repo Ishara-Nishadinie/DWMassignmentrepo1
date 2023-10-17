@@ -60,7 +60,7 @@
 				"     startAt: 1L,",
 				"     stepValue: 1L) ~> ProductSKStream",
 				"ProductSKStream sink(allowSchemaDrift: true,",
-				"     validateSchema: false,",
+				"     validateSchema: true,",
 				"     input(",
 				"          Product_SK as integer,",
 				"          Product_Id as string,",
@@ -78,7 +78,17 @@
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     errorHandlingOption: 'stopOnFirstError') ~> ProductSink"
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          Product_SK,",
+				"          Product_Id,",
+				"          Name,",
+				"          Fabric_Type,",
+				"          Size_Range,",
+				"          Color,",
+				"          Category,",
+				"          Unit_Cost",
+				"     )) ~> ProductSink"
 			]
 		}
 	}
