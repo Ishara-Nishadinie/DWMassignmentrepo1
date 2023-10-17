@@ -14,6 +14,10 @@
 			],
 			"sinks": [
 				{
+					"dataset": {
+						"referenceName": "AzureSqlSinkTableProduct",
+						"type": "DatasetReference"
+					},
 					"name": "ProductSink"
 				}
 			],
@@ -57,8 +61,24 @@
 				"     stepValue: 1L) ~> ProductSKStream",
 				"ProductSKStream sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
+				"     input(",
+				"          Product_SK as integer,",
+				"          Product_Id as string,",
+				"          Name as string,",
+				"          Fabric_Type as string,",
+				"          Size_Range as string,",
+				"          Color as string,",
+				"          Category as string,",
+				"          Unit_Cost as decimal(10,2)",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> ProductSink"
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> ProductSink"
 			]
 		}
 	}
