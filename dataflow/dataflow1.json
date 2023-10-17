@@ -33,7 +33,7 @@
 				"     validateSchema: true,",
 				"     inferDriftedColumnTypes: true,",
 				"     limit: 100,",
-				"     ignoreNoFilesFound: false) ~> source"
+				"     ignoreNoFilesFound: true) ~> source"
 			]
 		}
 	}
