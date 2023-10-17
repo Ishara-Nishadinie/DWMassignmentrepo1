@@ -786,84 +786,24 @@
 							},
 							{
 								"source": {
-									"name": "Product_SK",
+									"name": "Customer_Id",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "Product_SK",
+									"name": "Customer_Id",
 									"type": "String",
 									"physicalType": "nvarchar"
 								}
 							},
 							{
 								"source": {
-									"name": "Customer_SK",
+									"name": "Total (USD)",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "Customer_SK",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Order_Date_SK",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Order_Date_SK",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Order_Suppliers_SK",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Order_Suppliers_SK",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Status_SK",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Status_SK",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Quantity",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Quantity",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "Unit cost (USD)",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Unit_Cost",
+									"name": "Total_USD",
 									"type": "Decimal",
 									"physicalType": "decimal",
 									"scale": 2,
@@ -886,13 +826,13 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "AzureSqlTableOrderFact",
+						"referenceName": "AzureSqlTableAggragateFact",
 						"type": "DatasetReference"
 					}
 				]
 			},
 			{
-				"name": "OrderData_copy2",
+				"name": "bridgeordersupplier",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -1032,7 +972,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "csvorder",
+						"referenceName": "bridgeordersupplier",
 						"type": "DatasetReference"
 					}
 				],
