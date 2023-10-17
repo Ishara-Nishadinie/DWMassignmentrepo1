@@ -14,7 +14,7 @@
 			],
 			"sinks": [
 				{
-					"name": "sink1"
+					"name": "ProductSink"
 				}
 			],
 			"transformations": [
@@ -58,7 +58,7 @@
 				"ProductSKStream sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink1"
+				"     skipDuplicateMapOutputs: true) ~> ProductSink"
 			]
 		}
 	}
