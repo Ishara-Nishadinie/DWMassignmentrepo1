@@ -1,6 +1,7 @@
 {
 	"name": "dataflow1",
 	"properties": {
+		"description": "dataflowtest1",
 		"type": "MappingDataFlow",
 		"typeProperties": {
 			"sources": [
