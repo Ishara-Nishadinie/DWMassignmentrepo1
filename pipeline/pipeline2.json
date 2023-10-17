@@ -392,50 +392,26 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "Date_Key",
+									"name": "Status_SK",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "Date_Key",
+									"name": "Status_SK",
 									"type": "String",
 									"physicalType": "nvarchar"
 								}
 							},
 							{
 								"source": {
-									"name": "Order_Date",
+									"name": "Order_status",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "Order_Date",
-									"type": "DateTime",
-									"physicalType": "date"
-								}
-							},
-							{
-								"source": {
-									"name": "Estimated_Order_Finish_Date",
+									"name": "Order_Status",
 									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Estimated_Order_Finish_Date",
-									"type": "DateTime",
-									"physicalType": "date"
-								}
-							},
-							{
-								"source": {
-									"name": "Order_Finish_Date",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Order_Finish_Date",
-									"type": "DateTime",
-									"physicalType": "date"
+									"physicalType": "nvarchar"
 								}
 							}
 						],
@@ -448,13 +424,91 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "csvdate",
+						"referenceName": "csvjunk",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "AzureSqlDate",
+						"referenceName": "AzureSqlJunk",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "productdata",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Status_SK",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Status_SK",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Order_status",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Order_Status",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "csvjunk",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "AzureSqlJunk",
 						"type": "DatasetReference"
 					}
 				]
