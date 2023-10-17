@@ -6,10 +6,6 @@
 		"typeProperties": {
 			"sources": [
 				{
-					"linkedService": {
-						"referenceName": "AzureSqlDatabaseSupplier",
-						"type": "LinkedServiceReference"
-					},
 					"name": "source"
 				}
 			],
@@ -19,12 +15,7 @@
 				"source(allowSchemaDrift: true,",
 				"     validateSchema: true,",
 				"     inferDriftedColumnTypes: true,",
-				"     limit: 100,",
-				"     format: 'table',",
-				"     store: 'sqlserver',",
-				"     schemaName: '',",
-				"     tableName: '',",
-				"     isolationLevel: 'READ_UNCOMMITTED') ~> source"
+				"     limit: 100) ~> source"
 			]
 		}
 	}
