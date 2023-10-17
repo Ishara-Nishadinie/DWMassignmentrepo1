@@ -14,11 +14,7 @@
 				}
 			],
 			"sinks": [],
-			"transformations": [
-				{
-					"name": "stringify1"
-				}
-			],
+			"transformations": [],
 			"scriptLines": [
 				"source(output(",
 				"          Customer as string,",
@@ -38,8 +34,7 @@
 				"     validateSchema: true,",
 				"     inferDriftedColumnTypes: true,",
 				"     limit: 100,",
-				"     ignoreNoFilesFound: true) ~> source",
-				"source stringify(format: 'json') ~> stringify1"
+				"     ignoreNoFilesFound: true) ~> source"
 			]
 		}
 	}
