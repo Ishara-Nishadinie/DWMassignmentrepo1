@@ -1,9 +1,0 @@
-{
-	"name": "dmw_pipeline1",
-	"properties": {
-		"description": "first task",
-		"annotations": [],
-		"lastPublishTime": "2023-10-15T14:37:44Z"
-	},
-	"type": "Microsoft.DataFactory/factories/pipelines"
-}
