@@ -15,7 +15,10 @@
 			"sinks": [],
 			"transformations": [
 				{
-					"name": "select1"
+					"name": "selectcolumns"
+				},
+				{
+					"name": "surrogateKey1"
 				}
 			],
 			"scriptLines": [
@@ -40,7 +43,10 @@
 				"          Type",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select1"
+				"     skipDuplicateMapOutputs: true) ~> selectcolumns",
+				"selectcolumns keyGenerate(output({undefined} as long),",
+				"     startAt: 1L,",
+				"     stepValue: 1L) ~> surrogateKey1"
 			]
 		}
 	}
