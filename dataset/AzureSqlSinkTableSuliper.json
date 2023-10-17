@@ -1,8 +1,8 @@
 {
-	"name": "AzureSqlTableSupplier",
+	"name": "AzureSqlSinkTableSuliper",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzureSqlDatabaseSupplier",
+			"referenceName": "AzureSqlDatabaseSinkSupplier",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
@@ -10,7 +10,8 @@
 		"schema": [
 			{
 				"name": "Supplier_SK",
-				"type": "nvarchar"
+				"type": "int",
+				"precision": 10
 			},
 			{
 				"name": "Supplier_Code",
@@ -34,7 +35,7 @@
 			}
 		],
 		"typeProperties": {
-			"schema": "dbo",
+			"schema": "Orders",
 			"table": "Supplier"
 		}
 	}

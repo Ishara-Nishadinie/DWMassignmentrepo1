@@ -6,16 +6,76 @@
 		"typeProperties": {
 			"sources": [
 				{
-					"name": "source"
+					"dataset": {
+						"referenceName": "AzureSqlTableSupplier",
+						"type": "DatasetReference"
+					},
+					"name": "source",
+					"description": "Import data from AzureSqlTableSupplier"
 				}
 			],
-			"sinks": [],
-			"transformations": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "AzureSqlSinkTableSuliper",
+						"type": "DatasetReference"
+					},
+					"name": "SupplierSink"
+				}
+			],
+			"transformations": [
+				{
+					"name": "selectcolumns"
+				},
+				{
+					"name": "SupplierSKStream"
+				}
+			],
 			"scriptLines": [
-				"source(allowSchemaDrift: true,",
+				"source(output(",
+				"          Supplier_SK as string,",
+				"          Supplier_Code as string,",
+				"          Name as string,",
+				"          Region as string,",
+				"          Country as string,",
+				"          Type as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
 				"     validateSchema: true,",
 				"     inferDriftedColumnTypes: true,",
-				"     limit: 100) ~> source"
+				"     limit: 100,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> source",
+				"source select(mapColumn(",
+				"          Supplier_Code,",
+				"          Name,",
+				"          Region,",
+				"          Country,",
+				"          Type",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> selectcolumns",
+				"selectcolumns keyGenerate(output(Supplier_SK as long),",
+				"     startAt: 1L,",
+				"     stepValue: 1L) ~> SupplierSKStream",
+				"SupplierSKStream sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          Supplier_SK as integer,",
+				"          Supplier_Code as string,",
+				"          Name as string,",
+				"          Region as string,",
+				"          Country as string,",
+				"          Type as string",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> SupplierSink"
 			]
 		}
 	}

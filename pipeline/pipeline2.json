@@ -250,7 +250,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "AzureSqlTable2",
+						"referenceName": "AzureSqlTableSupplier",
 						"type": "DatasetReference"
 					}
 				]
@@ -910,7 +910,7 @@
 				]
 			},
 			{
-				"name": "Data flow1",
+				"name": "Supplier Data Flow",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [
 					{
