@@ -157,6 +157,11 @@
 								}
 							},
 							{
+								"source": {
+									"name": "Responsible Person",
+									"type": "String",
+									"physicalType": "String"
+								},
 								"sink": {
 									"name": "ResponsiblePerson",
 									"type": "String",
@@ -164,6 +169,11 @@
 								}
 							},
 							{
+								"source": {
+									"name": "Order Modified Date",
+									"type": "String",
+									"physicalType": "String"
+								},
 								"sink": {
 									"name": "OrderModifiedDate",
 									"type": "DateTime",
