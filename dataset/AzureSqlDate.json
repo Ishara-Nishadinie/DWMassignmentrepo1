@@ -1,0 +1,33 @@
+{
+	"name": "AzureSqlDate",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabaseDate",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Date_Key",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Order_Date",
+				"type": "date"
+			},
+			{
+				"name": "Estimated_Order_Finish_Date",
+				"type": "date"
+			},
+			{
+				"name": "Order_Finish_Date",
+				"type": "date"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "datetable"
+		}
+	}
+}
