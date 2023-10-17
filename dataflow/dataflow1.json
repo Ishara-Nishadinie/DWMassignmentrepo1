@@ -27,7 +27,7 @@
 				"          Status as string,",
 				"          {Order Received Date} as timestamp,",
 				"          {Responsible Person} as string,",
-				"          {Order Modified Date} as string",
+				"          {Order Modified Date} as timestamp",
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: true,",
