@@ -1,5 +1,5 @@
 {
-	"name": "DelimitedText1",
+	"name": "csvcustomer",
 	"properties": {
 		"description": "customersorce",
 		"linkedServiceName": {
