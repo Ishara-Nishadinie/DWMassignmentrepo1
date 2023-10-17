@@ -502,7 +502,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "csvjunk",
+						"referenceName": "csvproduct",
 						"type": "DatasetReference"
 					}
 				],
