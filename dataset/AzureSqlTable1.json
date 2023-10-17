@@ -9,8 +9,8 @@
 		"type": "AzureSqlTable",
 		"schema": [],
 		"typeProperties": {
-			"schema": "dwmschema",
-			"table": "order"
+			"schema": "dbo",
+			"table": "Orders"
 		}
 	}
 }
