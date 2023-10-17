@@ -13,7 +13,11 @@
 				}
 			],
 			"sinks": [],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "selectcolumns"
+				}
+			],
 			"scriptLines": [
 				"source(output(",
 				"          Product_Id as string,",
@@ -29,7 +33,18 @@
 				"     validateSchema: true,",
 				"     inferDriftedColumnTypes: true,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
-				"     format: 'table') ~> source1"
+				"     format: 'table') ~> source1",
+				"source1 select(mapColumn(",
+				"          Product_Id,",
+				"          Name,",
+				"          Fabric_Type,",
+				"          Size_Range,",
+				"          Color,",
+				"          Category,",
+				"          Unit_Cost",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> selectcolumns"
 			]
 		}
 	}
