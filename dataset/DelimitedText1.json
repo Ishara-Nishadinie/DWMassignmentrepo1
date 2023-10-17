@@ -1,6 +1,7 @@
 {
 	"name": "DelimitedText1",
 	"properties": {
+		"description": "customersorce",
 		"linkedServiceName": {
 			"referenceName": "AzureBlobStorage3",
 			"type": "LinkedServiceReference"
