@@ -7,6 +7,9 @@
 		},
 		"annotations": [],
 		"type": "AzureSqlTable",
-		"schema": []
+		"schema": [],
+		"typeProperties": {
+			"table": "customers"
+		}
 	}
 }
