@@ -25,7 +25,7 @@
 				"          Sizes as string,",
 				"          Active as string,",
 				"          Status as string,",
-				"          {Order Received Date} as date,",
+				"          {Order Received Date} as timestamp,",
 				"          {Responsible Person} as string,",
 				"          {Order Modified Date} as string",
 				"     ),",
