@@ -6,40 +6,16 @@
 		"typeProperties": {
 			"sources": [
 				{
-					"dataset": {
-						"referenceName": "csvdataset1",
-						"type": "DatasetReference"
-					},
 					"name": "source"
 				}
 			],
 			"sinks": [],
-			"transformations": [
-				{
-					"name": "derivedColumn1"
-				}
-			],
+			"transformations": [],
 			"scriptLines": [
-				"source(output(",
-				"          Customer as string,",
-				"          Season as string,",
-				"          Category as string,",
-				"          {Product Type} as string,",
-				"          {Style Code} as string,",
-				"          {Development Type} as string,",
-				"          Sizes as string,",
-				"          Active as string,",
-				"          Status as string,",
-				"          {Order Received Date} as string,",
-				"          {Responsible Person} as string,",
-				"          {Order Modified Date} as string",
-				"     ),",
-				"     allowSchemaDrift: true,",
+				"source(allowSchemaDrift: true,",
 				"     validateSchema: true,",
 				"     inferDriftedColumnTypes: true,",
-				"     limit: 100,",
-				"     ignoreNoFilesFound: true) ~> source",
-				"source derive({Order Received Date} = toDate('yyyy-MM-dd',{Order Received Date})) ~> derivedColumn1"
+				"     limit: 100) ~> source"
 			]
 		}
 	}
