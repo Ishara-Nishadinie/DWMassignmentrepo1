@@ -16,6 +16,9 @@
 			"transformations": [
 				{
 					"name": "selectcolumns"
+				},
+				{
+					"name": "ProductSKStream"
 				}
 			],
 			"scriptLines": [
@@ -44,7 +47,10 @@
 				"          Unit_Cost",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> selectcolumns"
+				"     skipDuplicateMapOutputs: true) ~> selectcolumns",
+				"selectcolumns keyGenerate(output(Product_SK as long),",
+				"     startAt: 1L,",
+				"     stepValue: 1L) ~> ProductSKStream"
 			]
 		}
 	}
