@@ -1,6 +1,10 @@
 {
 	"name": "AzureSqlTable1",
 	"properties": {
+		"linkedServiceName": {
+			"referenceName": "orderlinkedservice",
+			"type": "LinkedServiceReference"
+		},
 		"annotations": [],
 		"type": "AzureSqlTable",
 		"schema": [],
