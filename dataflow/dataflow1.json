@@ -39,7 +39,7 @@
 				"     inferDriftedColumnTypes: true,",
 				"     limit: 100,",
 				"     ignoreNoFilesFound: true) ~> source",
-				"source derive({Order Received Date} = ERROR_FUNCTION('toDate(Order Received Date)')) ~> derivedColumn1"
+				"source derive({Order Received Date} = toDate('yyyy-MM-dd',{Order Received Date})) ~> derivedColumn1"
 			]
 		}
 	}
