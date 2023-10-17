@@ -256,7 +256,7 @@
 				]
 			},
 			{
-				"name": "supplierdata_copy1",
+				"name": "data",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
