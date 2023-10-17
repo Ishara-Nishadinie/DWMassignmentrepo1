@@ -30,7 +30,8 @@
 				"          {Order Modified Date} as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
-				"     validateSchema: false,",
+				"     validateSchema: true,",
+				"     inferDriftedColumnTypes: true,",
 				"     ignoreNoFilesFound: false) ~> source"
 			]
 		}
