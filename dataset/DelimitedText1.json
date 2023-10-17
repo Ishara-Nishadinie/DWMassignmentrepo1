@@ -14,10 +14,10 @@
 				"folderPath": "data",
 				"fileSystem": "datafiles"
 			},
-			"columnDelimiter": ";",
+			"columnDelimiter": "Semicolon (;)",
 			"rowDelimiter": "\n",
 			"escapeChar": "\\",
-			"firstRowAsHeader": false,
+			"firstRowAsHeader": true,
 			"quoteChar": null
 		},
 		"schema": [
