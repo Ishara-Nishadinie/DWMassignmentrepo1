@@ -73,6 +73,11 @@
 								}
 							},
 							{
+								"source": {
+									"name": "Product Type",
+									"type": "String",
+									"physicalType": "String"
+								},
 								"sink": {
 									"name": "ProductType",
 									"type": "String",
@@ -80,6 +85,11 @@
 								}
 							},
 							{
+								"source": {
+									"name": "Style Code",
+									"type": "String",
+									"physicalType": "String"
+								},
 								"sink": {
 									"name": "StyleCode",
 									"type": "String",
@@ -87,6 +97,11 @@
 								}
 							},
 							{
+								"source": {
+									"name": "Development Type",
+									"type": "String",
+									"physicalType": "String"
+								},
 								"sink": {
 									"name": "DevelopmentType",
 									"type": "String",
@@ -130,6 +145,11 @@
 								}
 							},
 							{
+								"source": {
+									"name": "Order Received Date",
+									"type": "String",
+									"physicalType": "String"
+								},
 								"sink": {
 									"name": "OrderReceivedDate",
 									"type": "DateTime",
