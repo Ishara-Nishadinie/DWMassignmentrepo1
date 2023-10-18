@@ -15,7 +15,7 @@
 			"sinks": [],
 			"transformations": [
 				{
-					"name": "selectcolumn"
+					"name": "surrogateKey1"
 				}
 			],
 			"scriptLines": [
@@ -28,12 +28,9 @@
 				"     inferDriftedColumnTypes: true,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> source1",
-				"source1 select(mapColumn(",
-				"          Status_SK,",
-				"          Order_Status",
-				"     ),",
-				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> selectcolumn"
+				"source1 keyGenerate(output({undefined} as long),",
+				"     startAt: 1L,",
+				"     stepValue: 1L) ~> surrogateKey1"
 			]
 		}
 	}
