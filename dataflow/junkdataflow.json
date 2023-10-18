@@ -50,7 +50,7 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> selectStatus",
-				"JunkSKStream derive(Order_Status = ERROR_FUNCTION('')) ~> derivedColumn1",
+				"JunkSKStream derive(Order_Status = trim(Order_Status)) ~> derivedColumn1",
 				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: true,",
 				"     input(",
