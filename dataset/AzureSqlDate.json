@@ -9,25 +9,29 @@
 		"type": "AzureSqlTable",
 		"schema": [
 			{
-				"name": "Date_Key",
-				"type": "nvarchar"
+				"name": "SurrogateKey_Date",
+				"type": "int",
+				"precision": 10
 			},
 			{
-				"name": "Order_Date",
-				"type": "date"
+				"name": "Year",
+				"type": "int",
+				"precision": 10
 			},
 			{
-				"name": "Estimated_Order_Finish_Date",
-				"type": "date"
+				"name": "Month",
+				"type": "int",
+				"precision": 10
 			},
 			{
-				"name": "Order_Finish_Date",
-				"type": "date"
+				"name": "Date",
+				"type": "int",
+				"precision": 10
 			}
 		],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "datetable"
+			"table": "DateDim"
 		}
 	}
 }
