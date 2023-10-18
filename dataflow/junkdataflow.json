@@ -14,11 +14,7 @@
 			],
 			"sinks": [
 				{
-					"dataset": {
-						"referenceName": "AzureSqlSinkJunkTable",
-						"type": "DatasetReference"
-					},
-					"name": "JunkSink"
+					"name": "sink1"
 				}
 			],
 			"transformations": [
@@ -27,9 +23,6 @@
 				},
 				{
 					"name": "selectStatus"
-				},
-				{
-					"name": "assert1"
 				}
 			],
 			"scriptLines": [
@@ -50,25 +43,10 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> selectStatus",
-				"JunkSKStream assert(expectTrue(ERROR_FUNCTION(''), false, 'assert1')) ~> assert1",
-				"assert1 sink(allowSchemaDrift: true,",
-				"     validateSchema: true,",
-				"     input(",
-				"          Status_SK as integer,",
-				"          Order_Status as string",
-				"     ),",
-				"     deletable:false,",
-				"     insertable:true,",
-				"     updateable:false,",
-				"     upsertable:false,",
-				"     format: 'table',",
+				"JunkSKStream sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true,",
-				"     errorHandlingOption: 'stopOnFirstError',",
-				"     mapColumn(",
-				"          Order_Status,",
-				"          Status_SK = JunkData_SK",
-				"     )) ~> JunkSink"
+				"     skipDuplicateMapOutputs: true) ~> sink1"
 			]
 		}
 	}
