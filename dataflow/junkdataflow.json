@@ -12,10 +12,14 @@
 					"name": "source1"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"name": "sink1"
+				}
+			],
 			"transformations": [
 				{
-					"name": "surrogateKey1"
+					"name": "JunkSKStream"
 				}
 			],
 			"scriptLines": [
@@ -28,9 +32,13 @@
 				"     inferDriftedColumnTypes: true,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> source1",
-				"source1 keyGenerate(output({undefined} as long),",
+				"source1 keyGenerate(output(JunkData_SK as long),",
 				"     startAt: 1L,",
-				"     stepValue: 1L) ~> surrogateKey1"
+				"     stepValue: 1L) ~> JunkSKStream",
+				"JunkSKStream sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
 			]
 		}
 	}
