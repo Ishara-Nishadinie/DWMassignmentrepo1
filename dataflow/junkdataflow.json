@@ -27,6 +27,9 @@
 				},
 				{
 					"name": "selectStatus"
+				},
+				{
+					"name": "parse1"
 				}
 			],
 			"scriptLines": [
@@ -47,7 +50,9 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> selectStatus",
-				"JunkSKStream sink(allowSchemaDrift: true,",
+				"JunkSKStream parse(format: 'json',",
+				"     documentForm: 'documentPerLine') ~> parse1",
+				"parse1 sink(allowSchemaDrift: true,",
 				"     validateSchema: true,",
 				"     input(",
 				"          Status_SK as integer,",
