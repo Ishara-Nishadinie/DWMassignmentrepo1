@@ -193,7 +193,7 @@
 				"          Status,",
 				"          Order_Date,",
 				"          Product_SK,",
-				"          Unit_Cost = sourceproduct@Unit_Cost",
+				"          Unit_Cost = Quantity",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select2",
