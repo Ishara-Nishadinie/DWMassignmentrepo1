@@ -13,7 +13,11 @@
 				}
 			],
 			"sinks": [],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "selectcolumn"
+				}
+			],
 			"scriptLines": [
 				"source(output(",
 				"          Status_SK as string,",
@@ -23,7 +27,13 @@
 				"     validateSchema: true,",
 				"     inferDriftedColumnTypes: true,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
-				"     format: 'table') ~> source1"
+				"     format: 'table') ~> source1",
+				"source1 select(mapColumn(",
+				"          Status_SK,",
+				"          Order_Status",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> selectcolumn"
 			]
 		}
 	}
