@@ -163,7 +163,7 @@
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> sourcedate",
-				"sourceOrder, sourcecustomer lookup(source1@Customer_ID == sourcecustomer@Customer_ID,",
+				"sourceOrder, sourcecustomer lookup(sourceOrder@Customer_ID == sourcecustomer@Customer_ID,",
 				"     multiple: true,",
 				"     broadcast: 'auto',",
 				"     pickup: 'any')~> lookupcustomerSK",
