@@ -5,9 +5,9 @@
 		"typeProperties": {
 			"sources": [
 				{
-					"dataset": {
-						"referenceName": "AzureSqlTableOrderFact",
-						"type": "DatasetReference"
+					"linkedService": {
+						"referenceName": "AzureSqlDatabaseOrderfact",
+						"type": "LinkedServiceReference"
 					},
 					"name": "sourceOredrTemp"
 				},
@@ -89,21 +89,14 @@
 				}
 			],
 			"scriptLines": [
-				"source(output(",
-				"          Order_Id as string,",
-				"          Quantity as integer,",
-				"          Unit_Cost as decimal(10,2),",
-				"          Product_ID as string,",
-				"          Customer_ID as string,",
-				"          Supplier_ID as string,",
-				"          Status as string,",
-				"          Order_Date as date",
-				"     ),",
-				"     allowSchemaDrift: true,",
+				"source(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     inferDriftedColumnTypes: true,",
-				"     isolationLevel: 'READ_UNCOMMITTED',",
-				"     format: 'table') ~> sourceOredrTemp",
+				"     format: 'table',",
+				"     store: 'sqlserver',",
+				"     schemaName: '',",
+				"     tableName: '',",
+				"     isolationLevel: 'READ_UNCOMMITTED') ~> sourceOredrTemp",
 				"source(output(",
 				"          Customer_SK as integer,",
 				"          Customer_ID as string,",
@@ -193,7 +186,7 @@
 				"          Status,",
 				"          Order_Date,",
 				"          Product_SK,",
-				"          Unit_Cost = sourceproduct@Unit_Cost",
+				"          Unit_Cost",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select2",
