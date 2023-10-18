@@ -27,6 +27,9 @@
 				},
 				{
 					"name": "selectStatus"
+				},
+				{
+					"name": "assert1"
 				}
 			],
 			"scriptLines": [
@@ -47,7 +50,8 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> selectStatus",
-				"JunkSKStream sink(allowSchemaDrift: true,",
+				"JunkSKStream assert(expectTrue(ERROR_FUNCTION(''), false, 'assert1')) ~> assert1",
+				"assert1 sink(allowSchemaDrift: true,",
 				"     validateSchema: true,",
 				"     input(",
 				"          Status_SK as integer,",
