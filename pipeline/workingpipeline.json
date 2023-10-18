@@ -743,7 +743,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "productdataflow",
+						"referenceName": "orderfactdataflow",
 						"type": "DataFlowReference"
 					},
 					"compute": {
