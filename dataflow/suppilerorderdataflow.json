@@ -15,7 +15,7 @@
 			"sinks": [],
 			"transformations": [
 				{
-					"name": "surrogateKey1"
+					"name": "SupplierOrderSKStream"
 				}
 			],
 			"scriptLines": [
@@ -30,7 +30,7 @@
 				"     format: 'table') ~> source1",
 				"source1 keyGenerate(output({undefined} as long),",
 				"     startAt: 1L,",
-				"     stepValue: 1L) ~> surrogateKey1"
+				"     stepValue: 1L) ~> SupplierOrderSKStream"
 			]
 		}
 	}
