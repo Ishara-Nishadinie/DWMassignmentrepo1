@@ -11,16 +11,79 @@
 		"AzureBlobStorage2_connectionString": {
 			"value": ""
 		},
+		"AzureBlobStorage3_connectionString": {
+			"value": ""
+		},
 		"AzureDataLakeStorage1_accountKey": {
 			"value": ""
 		},
 		"AzureDatabricks1_accessToken": {
 			"value": ""
 		},
+		"AzureSqlDatabaseAggragateFact_connectionString": {
+			"value": ""
+		},
+		"AzureSqlDatabaseBridgeOrderSupplier_connectionString": {
+			"value": ""
+		},
+		"AzureSqlDatabaseCustomer_connectionString": {
+			"value": ""
+		},
+		"AzureSqlDatabaseDate_connectionString": {
+			"value": ""
+		},
+		"AzureSqlDatabaseJunk_connectionString": {
+			"value": ""
+		},
+		"AzureSqlDatabaseOrderfact_connectionString": {
+			"value": ""
+		},
+		"AzureSqlDatabaseProduct_connectionString": {
+			"value": ""
+		},
+		"AzureSqlDatabaseProductSink_connectionString": {
+			"value": ""
+		},
+		"AzureSqlDatabaseSinkCustomer_connectionString": {
+			"value": ""
+		},
+		"AzureSqlDatabaseSinkJunk_connectionString": {
+			"value": ""
+		},
+		"AzureSqlDatabaseSinkOrderFact_connectionString": {
+			"value": ""
+		},
+		"AzureSqlDatabaseSinkSupplier_connectionString": {
+			"value": ""
+		},
+		"AzureSqlDatabaseSupplier_connectionString": {
+			"value": ""
+		},
+		"aggragatefactblobstorage_connectionString": {
+			"value": ""
+		},
+		"bridgesupplierorderblobstorage_connectionString": {
+			"value": ""
+		},
+		"dateblobstorage_connectionString": {
+			"value": ""
+		},
+		"junkblobstorage_connectionString": {
+			"value": ""
+		},
 		"order_connectionString": {
 			"value": ""
 		},
+		"orderblobstorage_connectionString": {
+			"value": ""
+		},
 		"orderlinkedservice_connectionString": {
+			"value": ""
+		},
+		"productblobstorage_connectionString": {
+			"value": ""
+		},
+		"suppplierblobstorage_connectionString": {
 			"value": ""
 		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {

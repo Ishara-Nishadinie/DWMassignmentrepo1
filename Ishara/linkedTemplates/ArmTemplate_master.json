@@ -15,6 +15,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage2'"
 		},
+		"AzureBlobStorage3_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage3'"
+		},
 		"AzureDataLakeStorage1_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage1'"
@@ -23,13 +27,93 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accessToken' of 'AzureDatabricks1'"
 		},
+		"AzureSqlDatabaseAggragateFact_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabaseAggragateFact'"
+		},
+		"AzureSqlDatabaseBridgeOrderSupplier_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabaseBridgeOrderSupplier'"
+		},
+		"AzureSqlDatabaseCustomer_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabaseCustomer'"
+		},
+		"AzureSqlDatabaseDate_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabaseDate'"
+		},
+		"AzureSqlDatabaseJunk_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabaseJunk'"
+		},
+		"AzureSqlDatabaseOrderfact_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabaseOrderfact'"
+		},
+		"AzureSqlDatabaseProduct_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabaseProduct'"
+		},
+		"AzureSqlDatabaseProductSink_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabaseProductSink'"
+		},
+		"AzureSqlDatabaseSinkCustomer_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabaseSinkCustomer'"
+		},
+		"AzureSqlDatabaseSinkJunk_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabaseSinkJunk'"
+		},
+		"AzureSqlDatabaseSinkOrderFact_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabaseSinkOrderFact'"
+		},
+		"AzureSqlDatabaseSinkSupplier_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabaseSinkSupplier'"
+		},
+		"AzureSqlDatabaseSupplier_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabaseSupplier'"
+		},
+		"aggragatefactblobstorage_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'aggragatefactblobstorage'"
+		},
+		"bridgesupplierorderblobstorage_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'bridgesupplierorderblobstorage'"
+		},
+		"dateblobstorage_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'dateblobstorage'"
+		},
+		"junkblobstorage_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'junkblobstorage'"
+		},
 		"order_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'order'"
 		},
+		"orderblobstorage_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'orderblobstorage'"
+		},
 		"orderlinkedservice_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'orderlinkedservice'"
+		},
+		"productblobstorage_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'productblobstorage'"
+		},
+		"suppplierblobstorage_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'suppplierblobstorage'"
 		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"type": "string",
@@ -72,17 +156,59 @@
 					"AzureBlobStorage2_connectionString": {
 						"value": "[parameters('AzureBlobStorage2_connectionString')]"
 					},
+					"AzureBlobStorage3_connectionString": {
+						"value": "[parameters('AzureBlobStorage3_connectionString')]"
+					},
 					"AzureDataLakeStorage1_accountKey": {
 						"value": "[parameters('AzureDataLakeStorage1_accountKey')]"
 					},
 					"AzureDatabricks1_accessToken": {
 						"value": "[parameters('AzureDatabricks1_accessToken')]"
 					},
-					"orderlinkedservice_connectionString": {
-						"value": "[parameters('orderlinkedservice_connectionString')]"
+					"AzureSqlDatabaseAggragateFact_connectionString": {
+						"value": "[parameters('AzureSqlDatabaseAggragateFact_connectionString')]"
 					},
-					"order_connectionString": {
-						"value": "[parameters('order_connectionString')]"
+					"AzureSqlDatabaseBridgeOrderSupplier_connectionString": {
+						"value": "[parameters('AzureSqlDatabaseBridgeOrderSupplier_connectionString')]"
+					},
+					"AzureSqlDatabaseDate_connectionString": {
+						"value": "[parameters('AzureSqlDatabaseDate_connectionString')]"
+					},
+					"AzureSqlDatabaseJunk_connectionString": {
+						"value": "[parameters('AzureSqlDatabaseJunk_connectionString')]"
+					},
+					"AzureSqlDatabaseOrderfact_connectionString": {
+						"value": "[parameters('AzureSqlDatabaseOrderfact_connectionString')]"
+					},
+					"AzureSqlDatabaseProduct_connectionString": {
+						"value": "[parameters('AzureSqlDatabaseProduct_connectionString')]"
+					},
+					"AzureSqlDatabaseProductSink_connectionString": {
+						"value": "[parameters('AzureSqlDatabaseProductSink_connectionString')]"
+					},
+					"AzureSqlDatabaseSinkCustomer_connectionString": {
+						"value": "[parameters('AzureSqlDatabaseSinkCustomer_connectionString')]"
+					},
+					"AzureSqlDatabaseSinkJunk_connectionString": {
+						"value": "[parameters('AzureSqlDatabaseSinkJunk_connectionString')]"
+					},
+					"AzureSqlDatabaseSinkOrderFact_connectionString": {
+						"value": "[parameters('AzureSqlDatabaseSinkOrderFact_connectionString')]"
+					},
+					"AzureSqlDatabaseSinkSupplier_connectionString": {
+						"value": "[parameters('AzureSqlDatabaseSinkSupplier_connectionString')]"
+					},
+					"AzureSqlDatabaseSupplier_connectionString": {
+						"value": "[parameters('AzureSqlDatabaseSupplier_connectionString')]"
+					},
+					"aggragatefactblobstorage_connectionString": {
+						"value": "[parameters('aggragatefactblobstorage_connectionString')]"
+					},
+					"bridgesupplierorderblobstorage_connectionString": {
+						"value": "[parameters('bridgesupplierorderblobstorage_connectionString')]"
+					},
+					"dateblobstorage_connectionString": {
+						"value": "[parameters('dateblobstorage_connectionString')]"
 					},
 					"AzureDataLakeStorage1_properties_typeProperties_url": {
 						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
@@ -93,6 +219,67 @@
 				}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "Ishara_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"junkblobstorage_connectionString": {
+						"value": "[parameters('junkblobstorage_connectionString')]"
+					},
+					"orderblobstorage_connectionString": {
+						"value": "[parameters('orderblobstorage_connectionString')]"
+					},
+					"orderlinkedservice_connectionString": {
+						"value": "[parameters('orderlinkedservice_connectionString')]"
+					},
+					"productblobstorage_connectionString": {
+						"value": "[parameters('productblobstorage_connectionString')]"
+					},
+					"suppplierblobstorage_connectionString": {
+						"value": "[parameters('suppplierblobstorage_connectionString')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'Ishara_ArmTemplate_0')]"
+			]
+		},
+		{
+			"name": "Ishara_ArmTemplate_2",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_2.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureSqlDatabaseCustomer_connectionString": {
+						"value": "[parameters('AzureSqlDatabaseCustomer_connectionString')]"
+					},
+					"order_connectionString": {
+						"value": "[parameters('order_connectionString')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'Ishara_ArmTemplate_1')]"
+			]
 		}
 	]
 }
