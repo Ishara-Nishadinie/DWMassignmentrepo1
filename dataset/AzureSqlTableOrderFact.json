@@ -41,7 +41,7 @@
 			},
 			{
 				"name": "Order_Date",
-				"type": "date"
+				"type": "nvarchar"
 			}
 		],
 		"typeProperties": {

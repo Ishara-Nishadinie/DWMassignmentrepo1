@@ -44,10 +44,10 @@
 				"          Customer_ID as string,",
 				"          Supplier_ID as string,",
 				"          Status as string,",
-				"          Order_Date as date",
+				"          Order_Date as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
-				"     validateSchema: true,",
+				"     validateSchema: false,",
 				"     limit: 20,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> orderdata"
