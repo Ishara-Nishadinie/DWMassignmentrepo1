@@ -55,7 +55,7 @@
 				"     limit: 20,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> orderdata",
-				"orderdata, supplier join(ERROR_FUNCTION('') == ERROR_FUNCTION(''),",
+				"orderdata, supplier join(Supplier_ID == Supplier_Code,",
 				"     joinType:'inner',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
