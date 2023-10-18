@@ -61,7 +61,11 @@
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     errorHandlingOption: 'stopOnFirstError') ~> JunkSink"
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          Status_SK = JunkData_SK,",
+				"          Order_Status",
+				"     )) ~> JunkSink"
 			]
 		}
 	}
