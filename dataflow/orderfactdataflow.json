@@ -73,19 +73,16 @@
 					"name": "lookupjunkSK"
 				},
 				{
-					"name": "select3"
+					"name": "selectJunkSK"
 				},
 				{
 					"name": "lookupsupplierSK"
 				},
 				{
-					"name": "select4"
+					"name": "selectSupSK"
 				},
 				{
-					"name": "lookupdate"
-				},
-				{
-					"name": "derivedColumn1"
+					"name": "lookupDate"
 				}
 			],
 			"scriptLines": [
@@ -212,8 +209,8 @@
 				"          Status_SK",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select3",
-				"select3, sourcesupplier lookup(Supplier_ID == Supplier_Code,",
+				"     skipDuplicateMapOutputs: true) ~> selectJunkSK",
+				"selectJunkSK, sourcesupplier lookup(Supplier_ID == Supplier_Code,",
 				"     multiple: false,",
 				"     pickup: 'any',",
 				"     broadcast: 'auto')~> lookupsupplierSK",
@@ -228,19 +225,12 @@
 				"          Supplier_SK",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select4",
-				"derivedColumn1, sourcedate lookup(Order_Date == concat(\r",
-				"    toString(Date), \r",
-				"    '/', \r",
-				"    toString(Month), \r",
-				"    '/',\r",
-				"    toString(Year)\r",
-				"),",
-				"     multiple: false,",
-				"     pickup: 'any',",
-				"     broadcast: 'auto')~> lookupdate",
-				"select4 derive(Order_Date = concat(split(Order_Date, '/')[2], split(Order_Date, '/')[0], split(Order_Date, '/')[1])) ~> derivedColumn1",
-				"lookupdate sink(allowSchemaDrift: true,",
+				"     skipDuplicateMapOutputs: true) ~> selectSupSK",
+				"selectSupSK, sourcedate lookup(Order_Date == ERROR_FUNCTION(''),",
+				"     multiple: true,",
+				"     broadcast: 'auto',",
+				"     pickup: 'any')~> lookupDate",
+				"lookupDate sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
 				"          Order_Id as string,",
