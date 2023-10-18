@@ -14,10 +14,6 @@
 				"precision": 10
 			},
 			{
-				"name": "Status_id",
-				"type": "nvarchar"
-			},
-			{
 				"name": "Order_Status",
 				"type": "nvarchar"
 			}

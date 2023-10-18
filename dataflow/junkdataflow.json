@@ -51,7 +51,6 @@
 				"     validateSchema: true,",
 				"     input(",
 				"          Status_SK as integer,",
-				"          Status_id as string,",
 				"          Order_Status as string",
 				"     ),",
 				"     deletable:false,",
@@ -63,7 +62,8 @@
 				"     skipDuplicateMapOutputs: true,",
 				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
-				"          Order_Status",
+				"          Order_Status,",
+				"          Status_SK = JunkData_SK",
 				"     )) ~> JunkSink"
 			]
 		}

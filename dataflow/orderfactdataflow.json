@@ -100,7 +100,6 @@
 				"     format: 'table') ~> sourceproduct",
 				"source(output(",
 				"          Status_SK as integer,",
-				"          Status_id as string,",
 				"          Order_Status as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
