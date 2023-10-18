@@ -9,10 +9,6 @@
 		"type": "AzureSqlTable",
 		"schema": [
 			{
-				"name": "Supplier_SK",
-				"type": "nvarchar"
-			},
-			{
 				"name": "Supplier_Code",
 				"type": "nvarchar"
 			},
