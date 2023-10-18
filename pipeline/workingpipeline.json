@@ -412,6 +412,11 @@
 								}
 							},
 							{
+								"source": {
+									"name": "Unit_Cost($)",
+									"type": "String",
+									"physicalType": "String"
+								},
 								"sink": {
 									"name": "Unit_Cost",
 									"type": "Decimal",
