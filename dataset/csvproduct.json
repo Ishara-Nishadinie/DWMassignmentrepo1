@@ -21,11 +21,7 @@
 		},
 		"schema": [
 			{
-				"name": "Product_Id",
-				"type": "String"
-			},
-			{
-				"name": "Product_SK",
+				"name": "Product_ID",
 				"type": "String"
 			},
 			{

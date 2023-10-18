@@ -1,5 +1,5 @@
 {
-	"name": "pipeline2",
+	"name": "workingpipeline",
 	"properties": {
 		"activities": [
 			{
@@ -277,9 +277,7 @@
 							},
 							{
 								"source": {
-									"name": "Order_status",
-									"type": "String",
-									"physicalType": "String"
+									"name": "Status"
 								},
 								"sink": {
 									"name": "Order_Status",
@@ -343,24 +341,12 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "Product_Id",
+									"name": "Product_ID",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
 									"name": "Product_Id",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Product_SK",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "Product_SK",
 									"type": "String",
 									"physicalType": "nvarchar"
 								}

@@ -1,0 +1,161 @@
+{
+	"name": "orderfactdataflow",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "AzureSqlTableOrderFact",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				},
+				{
+					"dataset": {
+						"referenceName": "AzureSqlSinkTableCustomer",
+						"type": "DatasetReference"
+					},
+					"name": "sourcecustomer"
+				},
+				{
+					"dataset": {
+						"referenceName": "AzureSqlSinkTableProduct",
+						"type": "DatasetReference"
+					},
+					"name": "sourceproduct"
+				},
+				{
+					"dataset": {
+						"referenceName": "AzureSqlSinkJunkTable",
+						"type": "DatasetReference"
+					},
+					"name": "sourcejunk"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "lookupcustomerSK"
+				},
+				{
+					"name": "select1"
+				},
+				{
+					"name": "lookupproductSK"
+				},
+				{
+					"name": "select2"
+				},
+				{
+					"name": "lookupjunkSK"
+				},
+				{
+					"name": "select3"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          Order_Id as string,",
+				"          Product_SK as string,",
+				"          Customer_SK as string,",
+				"          Order_Date_SK as string,",
+				"          Order_Suppliers_SK as string,",
+				"          Status_SK as string,",
+				"          Quantity as integer,",
+				"          Unit_Cost as decimal(10,2)",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: true,",
+				"     inferDriftedColumnTypes: true,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> source1",
+				"source(output(",
+				"          Customer_SK as integer,",
+				"          Customer_ID as string,",
+				"          Name as string,",
+				"          Region as string,",
+				"          Country as string,",
+				"          Type as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: true,",
+				"     inferDriftedColumnTypes: true,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> sourcecustomer",
+				"source(output(",
+				"          Product_SK as integer,",
+				"          Product_Id as string,",
+				"          Name as string,",
+				"          Fabric_Type as string,",
+				"          Size_Range as string,",
+				"          Color as string,",
+				"          Category as string,",
+				"          Unit_Cost as decimal(10,2)",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: true,",
+				"     inferDriftedColumnTypes: true,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> sourceproduct",
+				"source(output(",
+				"          Status_SK as integer,",
+				"          Status_id as string,",
+				"          Order_Status as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> sourcejunk",
+				"source1, sourcecustomer lookup(source1@Customer_SK == Customer_ID,",
+				"     multiple: false,",
+				"     pickup: 'any',",
+				"     broadcast: 'auto')~> lookupcustomerSK",
+				"lookupcustomerSK select(mapColumn(",
+				"          Order_Id,",
+				"          Product_SK,",
+				"          Order_Date_SK,",
+				"          Order_Suppliers_SK,",
+				"          Status_SK,",
+				"          Quantity,",
+				"          Unit_Cost,",
+				"          Customer_SK = sourcecustomer@Customer_SK",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1, sourceproduct lookup(select1@Product_SK == Product_Id,",
+				"     multiple: false,",
+				"     pickup: 'any',",
+				"     broadcast: 'auto')~> lookupproductSK",
+				"lookupproductSK select(mapColumn(",
+				"          Order_Id,",
+				"          Order_Date_SK,",
+				"          Order_Suppliers_SK,",
+				"          Status_SK,",
+				"          Quantity,",
+				"          Unit_Cost = select1@Unit_Cost,",
+				"          Customer_SK,",
+				"          Product_SK = sourceproduct@Product_SK",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select2",
+				"select2, sourcejunk lookup(select2@Status_SK == Status_id,",
+				"     multiple: false,",
+				"     pickup: 'any',",
+				"     broadcast: 'auto')~> lookupjunkSK",
+				"lookupjunkSK select(mapColumn(",
+				"          Order_Id,",
+				"          Order_Date_SK,",
+				"          Order_Suppliers_SK,",
+				"          Quantity,",
+				"          Unit_Cost,",
+				"          Customer_SK,",
+				"          Product_SK,",
+				"          Status_SK = sourcejunk@Status_SK",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select3"
+			]
+		}
+	}
+}

@@ -1,0 +1,51 @@
+{
+	"name": "aggragatefactdataflow",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "AzureSqlTableOrderFact",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"name": "aggragatefactsink"
+				}
+			],
+			"transformations": [
+				{
+					"name": "aggregatefactstream"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          Order_Id as string,",
+				"          Product_SK as string,",
+				"          Customer_SK as string,",
+				"          Order_Date_SK as string,",
+				"          Order_Suppliers_SK as string,",
+				"          Status_SK as string,",
+				"          Quantity as integer,",
+				"          Unit_Cost as decimal(10,2)",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: true,",
+				"     inferDriftedColumnTypes: true,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> source1",
+				"source1 aggregate(groupBy(Order_Id,",
+				"          Customer_SK),",
+				"     Total = sum(Quantity*Unit_Cost)) ~> aggregatefactstream",
+				"aggregatefactstream sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> aggragatefactsink"
+			]
+		}
+	}
+}
