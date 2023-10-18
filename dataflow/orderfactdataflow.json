@@ -140,7 +140,7 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select2",
-				"select2, sourcejunk lookup(select2@Status_SK == Status,",
+				"select2, sourcejunk lookup(Status == Status_SK,",
 				"     multiple: false,",
 				"     pickup: 'any',",
 				"     broadcast: 'auto')~> lookupjunkSK",
