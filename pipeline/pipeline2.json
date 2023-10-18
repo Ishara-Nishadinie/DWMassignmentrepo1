@@ -1003,7 +1003,7 @@
 				}
 			},
 			{
-				"name": "Product Data Flow_copy1",
+				"name": "Junk Data Flow",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [
 					{
@@ -1023,7 +1023,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "productdataflow",
+						"referenceName": "junkdataflow",
 						"type": "DataFlowReference"
 					},
 					"compute": {
