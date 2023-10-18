@@ -21,27 +21,27 @@
 		},
 		"schema": [
 			{
-				"name": "Order_Id",
+				"name": "Order_ID",
 				"type": "String"
 			},
 			{
-				"name": "Product_SK",
+				"name": "Product_ID",
 				"type": "String"
 			},
 			{
-				"name": "Customer_SK",
+				"name": "Customer_ID",
 				"type": "String"
 			},
 			{
-				"name": "Order_Date_SK",
+				"name": "Order_Date",
 				"type": "String"
 			},
 			{
-				"name": "Order_Suppliers_SK",
+				"name": "Suppliers_ID",
 				"type": "String"
 			},
 			{
-				"name": "Status_SK",
+				"name": "Status",
 				"type": "String"
 			},
 			{
@@ -50,6 +50,10 @@
 			},
 			{
 				"name": "Unit cost (USD)",
+				"type": "String"
+			},
+			{
+				"name": "Total",
 				"type": "String"
 			}
 		]
