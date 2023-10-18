@@ -73,16 +73,22 @@
 					"name": "lookupjunkSK"
 				},
 				{
-					"name": "selectJunkSK"
+					"name": "select3"
 				},
 				{
 					"name": "lookupsupplierSK"
 				},
 				{
-					"name": "selectSupSK"
+					"name": "select4"
 				},
 				{
-					"name": "lookupDate"
+					"name": "lookupdate"
+				},
+				{
+					"name": "derivedColumn1"
+				},
+				{
+					"name": "select5"
 				}
 			],
 			"scriptLines": [
@@ -209,8 +215,8 @@
 				"          Status_SK",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> selectJunkSK",
-				"selectJunkSK, sourcesupplier lookup(Supplier_ID == Supplier_Code,",
+				"     skipDuplicateMapOutputs: true) ~> select3",
+				"select3, sourcesupplier lookup(Supplier_ID == Supplier_Code,",
 				"     multiple: false,",
 				"     pickup: 'any',",
 				"     broadcast: 'auto')~> lookupsupplierSK",
@@ -225,12 +231,26 @@
 				"          Supplier_SK",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> selectSupSK",
-				"selectSupSK, sourcedate lookup(Order_Date == ERROR_FUNCTION(''),",
-				"     multiple: true,",
-				"     broadcast: 'auto',",
-				"     pickup: 'any')~> lookupDate",
-				"lookupDate sink(allowSchemaDrift: true,",
+				"     skipDuplicateMapOutputs: true) ~> select4",
+				"derivedColumn1, sourcedate lookup(Order_Date == SurrogateKey_Date,",
+				"     multiple: false,",
+				"     pickup: 'any',",
+				"     broadcast: 'auto')~> lookupdate",
+				"select4 derive(Order_Date = toInteger(replace(toString(Order_Date, 'yyyyMMdd'), '-', ''))\r",
+				") ~> derivedColumn1",
+				"lookupdate select(mapColumn(",
+				"          Order_Id,",
+				"          Quantity,",
+				"          Unit_Cost,",
+				"          Customer_SK,",
+				"          Product_SK,",
+				"          Status_SK,",
+				"          Supplier_SK,",
+				"          Order_Date_SK = SurrogateKey_Date",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select5",
+				"select5 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
 				"          Order_Id as string,",
@@ -254,6 +274,8 @@
 				"          Order_Id,",
 				"          Product_SK,",
 				"          Customer_SK,",
+				"          Order_Date_SK,",
+				"          Suppliers_SK = Supplier_SK,",
 				"          Status_SK,",
 				"          Quantity,",
 				"          Unit_Cost",
