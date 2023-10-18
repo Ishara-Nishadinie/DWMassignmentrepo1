@@ -1,5 +1,5 @@
 {
-	"name": "dataflow1",
+	"name": "suppilerorderdataflow",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
@@ -13,7 +13,11 @@
 				}
 			],
 			"sinks": [],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "surrogateKey1"
+				}
+			],
 			"scriptLines": [
 				"source(output(",
 				"          Order_Suppliers_SK as string,",
@@ -23,7 +27,10 @@
 				"     validateSchema: true,",
 				"     inferDriftedColumnTypes: true,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
-				"     format: 'table') ~> source1"
+				"     format: 'table') ~> source1",
+				"source1 keyGenerate(output({undefined} as long),",
+				"     startAt: 1L,",
+				"     stepValue: 1L) ~> surrogateKey1"
 			]
 		}
 	}
