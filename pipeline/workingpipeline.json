@@ -605,58 +605,100 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "Product_ID",
+									"name": "Order_ID",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "Product_Id",
+									"name": "Order_Id",
 									"type": "String",
 									"physicalType": "nvarchar"
 								}
 							},
 							{
+								"source": {
+									"name": "Quantity",
+									"type": "String",
+									"physicalType": "String"
+								},
 								"sink": {
-									"name": "Name",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "Quantity",
+									"type": "Int32",
+									"physicalType": "int"
 								}
 							},
 							{
-								"sink": {
-									"name": "Fabric_Type",
+								"source": {
+									"name": "Unit cost (USD)",
 									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"sink": {
-									"name": "Size_Range",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"sink": {
-									"name": "Color",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"sink": {
-									"name": "Category",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
+									"physicalType": "String"
+								},
 								"sink": {
 									"name": "Unit_Cost",
 									"type": "Decimal",
 									"physicalType": "decimal",
 									"scale": 2,
 									"precision": 10
+								}
+							},
+							{
+								"source": {
+									"name": "Product_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Product_ID",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Customer_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Customer_ID",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Suppliers_ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Supplier_ID",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Status",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Status",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Order_Date",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Order_Date",
+									"type": "String",
+									"physicalType": "nvarchar"
 								}
 							}
 						],
@@ -675,7 +717,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "AzureSqlTableProduct",
+						"referenceName": "AzureSqlTableOrderFact",
 						"type": "DatasetReference"
 					}
 				]
