@@ -23,16 +23,12 @@
 			],
 			"transformations": [
 				{
-					"name": "selectcolumns"
-				},
-				{
 					"name": "CustomerSKStream"
 				}
 			],
 			"scriptLines": [
 				"source(output(",
 				"          Customer_Id as string,",
-				"          Customer_SK as string,",
 				"          Name as string,",
 				"          Region as string,",
 				"          Country as string,",
@@ -43,16 +39,7 @@
 				"     inferDriftedColumnTypes: true,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> source1",
-				"source1 select(mapColumn(",
-				"          Customer_Id,",
-				"          Name,",
-				"          Region,",
-				"          Country,",
-				"          Type",
-				"     ),",
-				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> selectcolumns",
-				"selectcolumns keyGenerate(output(Customer_SK as long),",
+				"source1 keyGenerate(output(Customer_SK as long),",
 				"     startAt: 1L,",
 				"     stepValue: 1L) ~> CustomerSKStream",
 				"CustomerSKStream sink(allowSchemaDrift: true,",
