@@ -9,7 +9,7 @@
 						"referenceName": "AzureSqlTableOrderFact",
 						"type": "DatasetReference"
 					},
-					"name": "sourceOredrTemp"
+					"name": "sourceOrder"
 				},
 				{
 					"dataset": {
@@ -103,7 +103,7 @@
 				"     validateSchema: false,",
 				"     inferDriftedColumnTypes: true,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
-				"     format: 'table') ~> sourceOredrTemp",
+				"     format: 'table') ~> sourceOrder",
 				"source(output(",
 				"          Customer_SK as integer,",
 				"          Customer_ID as string,",
@@ -163,10 +163,10 @@
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> sourcedate",
-				"sourceOredrTemp, sourcecustomer lookup(source1@Customer_ID == sourcecustomer@Customer_ID,",
-				"     multiple: false,",
-				"     pickup: 'any',",
-				"     broadcast: 'auto')~> lookupcustomerSK",
+				"sourceOrder, sourcecustomer lookup(source1@Customer_ID == sourcecustomer@Customer_ID,",
+				"     multiple: true,",
+				"     broadcast: 'auto',",
+				"     pickup: 'any')~> lookupcustomerSK",
 				"lookupcustomerSK select(mapColumn(",
 				"          Order_Id,",
 				"          Quantity,",
