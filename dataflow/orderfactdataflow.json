@@ -6,10 +6,10 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "AzureSqlTableOrderFact",
+						"referenceName": "AzureOrderFactSqlTableNew",
 						"type": "DatasetReference"
 					},
-					"name": "source1"
+					"name": "sourceOredrTemp"
 				},
 				{
 					"dataset": {
@@ -31,6 +31,20 @@
 						"type": "DatasetReference"
 					},
 					"name": "sourcejunk"
+				},
+				{
+					"dataset": {
+						"referenceName": "AzureSqlSinkTableSuliper",
+						"type": "DatasetReference"
+					},
+					"name": "sourcesupplier"
+				},
+				{
+					"dataset": {
+						"referenceName": "AzureSqlDate",
+						"type": "DatasetReference"
+					},
+					"name": "sourcedate"
 				}
 			],
 			"sinks": [
@@ -57,6 +71,21 @@
 				},
 				{
 					"name": "lookupjunkSK"
+				},
+				{
+					"name": "select3"
+				},
+				{
+					"name": "lookupsupplierSK"
+				},
+				{
+					"name": "select4"
+				},
+				{
+					"name": "lookupdate"
+				},
+				{
+					"name": "derivedColumn1"
 				}
 			],
 			"scriptLines": [
@@ -68,13 +97,13 @@
 				"          Customer_ID as string,",
 				"          Supplier_ID as string,",
 				"          Status as string,",
-				"          Order_Date as string",
+				"          Order_Date as date",
 				"     ),",
 				"     allowSchemaDrift: true,",
-				"     validateSchema: true,",
+				"     validateSchema: false,",
 				"     inferDriftedColumnTypes: true,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
-				"     format: 'table') ~> source1",
+				"     format: 'table') ~> sourceOredrTemp",
 				"source(output(",
 				"          Customer_SK as integer,",
 				"          Customer_ID as string,",
@@ -111,7 +140,30 @@
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> sourcejunk",
-				"source1, sourcecustomer lookup(source1@Customer_ID == sourcecustomer@Customer_ID,",
+				"source(output(",
+				"          Supplier_SK as integer,",
+				"          Supplier_Code as string,",
+				"          Name as string,",
+				"          Region as string,",
+				"          Country as string,",
+				"          Type as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: true,",
+				"     inferDriftedColumnTypes: true,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> sourcesupplier",
+				"source(output(",
+				"          SurrogateKey_Date as integer,",
+				"          Year as integer,",
+				"          Month as integer,",
+				"          Date as integer",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> sourcedate",
+				"sourceOredrTemp, sourcecustomer lookup(source1@Customer_ID == sourcecustomer@Customer_ID,",
 				"     multiple: false,",
 				"     pickup: 'any',",
 				"     broadcast: 'auto')~> lookupcustomerSK",
@@ -149,7 +201,48 @@
 				"     multiple: false,",
 				"     pickup: 'any',",
 				"     broadcast: 'auto')~> lookupjunkSK",
-				"lookupjunkSK sink(allowSchemaDrift: true,",
+				"lookupjunkSK select(mapColumn(",
+				"          Order_Id,",
+				"          Quantity,",
+				"          Unit_Cost,",
+				"          Customer_SK,",
+				"          Supplier_ID,",
+				"          Order_Date,",
+				"          Product_SK,",
+				"          Status_SK",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select3",
+				"select3, sourcesupplier lookup(Supplier_ID == Supplier_Code,",
+				"     multiple: false,",
+				"     pickup: 'any',",
+				"     broadcast: 'auto')~> lookupsupplierSK",
+				"lookupsupplierSK select(mapColumn(",
+				"          Order_Id,",
+				"          Quantity,",
+				"          Unit_Cost,",
+				"          Customer_SK,",
+				"          Order_Date,",
+				"          Product_SK,",
+				"          Status_SK,",
+				"          Supplier_SK",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select4",
+				"derivedColumn1, sourcedate lookup(Order_Date == concat(\r",
+				"    toString(Date), \r",
+				"    '/', \r",
+				"    toString(Month), \r",
+				"    '/',\r",
+				"    toString(Year)\r",
+				"),",
+				"     multiple: false,",
+				"     pickup: 'any',",
+				"     broadcast: 'auto')~> lookupdate",
+				"select4 derive(Order_Date = concat(split(Order_Date, '/')[2], split(Order_Date, '/')[0], split(Order_Date, '/')[1])\r",
+				"\r",
+				") ~> derivedColumn1",
+				"lookupdate sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
 				"          Order_Id as string,",
