@@ -723,7 +723,7 @@
 				]
 			},
 			{
-				"name": "Product Data Flow_copy1",
+				"name": "Order Data Flow",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [
 					{
@@ -743,7 +743,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "productdataflow",
+						"referenceName": "orderfactdataflow",
 						"type": "DataFlowReference"
 					},
 					"compute": {
