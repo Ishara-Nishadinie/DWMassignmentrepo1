@@ -1,0 +1,31 @@
+{
+	"name": "AzureSqlTableAggragateFact",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabaseAggragateFact",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Order_Id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Customer_Id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Total_USD",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "AggregateFact"
+		}
+	}
+}

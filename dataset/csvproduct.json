@@ -1,0 +1,53 @@
+{
+	"name": "csvproduct",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "productblobstorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "DataSet - Dim_Product.csv",
+				"folderPath": "input",
+				"container": "datafactory"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Product_ID",
+				"type": "String"
+			},
+			{
+				"name": "Name",
+				"type": "String"
+			},
+			{
+				"name": "Fabric_Type",
+				"type": "String"
+			},
+			{
+				"name": "Size_Range",
+				"type": "String"
+			},
+			{
+				"name": "Color",
+				"type": "String"
+			},
+			{
+				"name": "Category",
+				"type": "String"
+			},
+			{
+				"name": "Unit_Cost($)",
+				"type": "String"
+			}
+		]
+	}
+}

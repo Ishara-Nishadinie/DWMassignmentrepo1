@@ -1,0 +1,61 @@
+{
+	"name": "csvorder",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "orderblobstorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "DataSet - Fact_Order.csv",
+				"folderPath": "input",
+				"container": "datafactory"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Order_ID",
+				"type": "String"
+			},
+			{
+				"name": "Product_ID",
+				"type": "String"
+			},
+			{
+				"name": "Customer_ID",
+				"type": "String"
+			},
+			{
+				"name": "Order_Date",
+				"type": "String"
+			},
+			{
+				"name": "Suppliers_ID",
+				"type": "String"
+			},
+			{
+				"name": "Status",
+				"type": "String"
+			},
+			{
+				"name": "Quantity",
+				"type": "String"
+			},
+			{
+				"name": "Unit cost (USD)",
+				"type": "String"
+			},
+			{
+				"name": "Total",
+				"type": "String"
+			}
+		]
+	}
+}

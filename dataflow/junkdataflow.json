@@ -1,0 +1,75 @@
+{
+	"name": "junkdataflow",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "AzureSqlJunk",
+						"type": "DatasetReference"
+					},
+					"name": "sourceJunk"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "AzureSqlSinkJunkTable",
+						"type": "DatasetReference"
+					},
+					"name": "Junksink"
+				}
+			],
+			"transformations": [
+				{
+					"name": "JunkSKStream"
+				},
+				{
+					"name": "selectStatus"
+				},
+				{
+					"name": "TrimStatusColumn"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          Status_SK as string,",
+				"          Order_Status as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: true,",
+				"     inferDriftedColumnTypes: true,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> sourceJunk",
+				"selectStatus keyGenerate(output(JunkData_SK as long),",
+				"     startAt: 1L,",
+				"     stepValue: 1L) ~> JunkSKStream",
+				"sourceJunk select(mapColumn(",
+				"          Order_Status",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> selectStatus",
+				"JunkSKStream derive(Order_Status = trim(Order_Status)) ~> TrimStatusColumn",
+				"TrimStatusColumn sink(allowSchemaDrift: true,",
+				"     validateSchema: true,",
+				"     input(",
+				"          Status_SK as integer,",
+				"          Order_Status as string",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          Status_SK = JunkData_SK,",
+				"          Order_Status",
+				"     )) ~> Junksink"
+			]
+		}
+	}
+}

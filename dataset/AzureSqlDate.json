@@ -1,0 +1,37 @@
+{
+	"name": "AzureSqlDate",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabaseDate",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "SurrogateKey_Date",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Year",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Month",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Date",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "DateDim"
+		}
+	}
+}

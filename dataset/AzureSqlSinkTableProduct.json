@@ -1,0 +1,52 @@
+{
+	"name": "AzureSqlSinkTableProduct",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabaseProductSink",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Product_SK",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Product_Id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Fabric_Type",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Size_Range",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Color",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Category",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Unit_Cost",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			}
+		],
+		"typeProperties": {
+			"schema": "Orders",
+			"table": "Product"
+		}
+	}
+}

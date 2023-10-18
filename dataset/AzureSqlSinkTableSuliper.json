@@ -1,0 +1,42 @@
+{
+	"name": "AzureSqlSinkTableSuliper",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabaseSinkSupplier",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Supplier_SK",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Supplier_Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Region",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Country",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Type",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "Orders",
+			"table": "Supplier"
+		}
+	}
+}

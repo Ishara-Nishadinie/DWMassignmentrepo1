@@ -1,0 +1,57 @@
+{
+	"name": "supplierorderdataflow",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "AzureSqlSinkTableSuliper",
+						"type": "DatasetReference"
+					},
+					"name": "supplier"
+				},
+				{
+					"dataset": {
+						"referenceName": "AzureSqlTableOrderFact",
+						"type": "DatasetReference"
+					},
+					"name": "orderdata"
+				}
+			],
+			"sinks": [],
+			"transformations": [],
+			"scriptLines": [
+				"source(output(",
+				"          Supplier_SK as integer,",
+				"          Supplier_Code as string,",
+				"          Name as string,",
+				"          Region as string,",
+				"          Country as string,",
+				"          Type as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: true,",
+				"     inferDriftedColumnTypes: true,",
+				"     limit: 20,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> supplier",
+				"source(output(",
+				"          Order_Id as string,",
+				"          Quantity as integer,",
+				"          Unit_Cost as decimal(10,2),",
+				"          Product_ID as string,",
+				"          Customer_ID as string,",
+				"          Supplier_ID as string,",
+				"          Status as string,",
+				"          Order_Date as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     limit: 20,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> orderdata"
+			]
+		}
+	}
+}

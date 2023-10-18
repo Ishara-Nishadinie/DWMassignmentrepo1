@@ -1,0 +1,66 @@
+{
+	"name": "aggragatefactdataflow",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "AzureSqlTableOrderFact",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "AzureSqlTableAggragateFact",
+						"type": "DatasetReference"
+					},
+					"name": "aggragatefactsink"
+				}
+			],
+			"transformations": [
+				{
+					"name": "aggregatefactstream"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          Order_Id as string,",
+				"          Quantity as integer,",
+				"          Unit_Cost as decimal(10,2),",
+				"          Product_ID as string,",
+				"          Customer_ID as string,",
+				"          Supplier_ID as string,",
+				"          Status as string,",
+				"          Order_Date as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: true,",
+				"     inferDriftedColumnTypes: true,",
+				"     limit: 9,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> source1",
+				"source1 aggregate(groupBy(Order_Id),",
+				"     Total = sum(Quantity*Unit_Cost)) ~> aggregatefactstream",
+				"aggregatefactstream sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          Order_Id as string,",
+				"          Customer_Id as string,",
+				"          Total_USD as decimal(10,2)",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> aggragatefactsink"
+			]
+		}
+	}
+}

@@ -1,0 +1,57 @@
+{
+	"name": "AzureSqlTableSinkOrderFact",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabaseSinkOrderFact",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Order_Id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Product_SK",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Customer_SK",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Order_Date_SK",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Suppliers_SK",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Status_SK",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Quantity",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Unit_Cost",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			}
+		],
+		"typeProperties": {
+			"schema": "Orders",
+			"table": "OrderFact"
+		}
+	}
+}

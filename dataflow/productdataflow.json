@@ -1,0 +1,80 @@
+{
+	"name": "productdataflow",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "AzureSqlTableProduct",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "AzureSqlSinkTableProduct",
+						"type": "DatasetReference"
+					},
+					"name": "ProductSink"
+				}
+			],
+			"transformations": [
+				{
+					"name": "ProductSKStream"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          Product_Id as string,",
+				"          Name as string,",
+				"          Fabric_Type as string,",
+				"          Size_Range as string,",
+				"          Color as string,",
+				"          Category as string,",
+				"          Unit_Cost as decimal(10,2)",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: true,",
+				"     inferDriftedColumnTypes: true,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> source1",
+				"source1 keyGenerate(output(Product_SK as long),",
+				"     startAt: 1L,",
+				"     stepValue: 1L) ~> ProductSKStream",
+				"ProductSKStream sink(allowSchemaDrift: true,",
+				"     validateSchema: true,",
+				"     input(",
+				"          Product_SK as integer,",
+				"          Product_Id as string,",
+				"          Name as string,",
+				"          Fabric_Type as string,",
+				"          Size_Range as string,",
+				"          Color as string,",
+				"          Category as string,",
+				"          Unit_Cost as decimal(10,2)",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          Product_SK,",
+				"          Product_Id,",
+				"          Name,",
+				"          Fabric_Type,",
+				"          Size_Range,",
+				"          Color,",
+				"          Category,",
+				"          Unit_Cost",
+				"     )) ~> ProductSink"
+			]
+		}
+	}
+}

@@ -1,0 +1,26 @@
+{
+	"name": "AzureSqlSinkJunkTable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabaseSinkJunk",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Status_SK",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Order_Status",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "Orders",
+			"table": "Status"
+		}
+	}
+}

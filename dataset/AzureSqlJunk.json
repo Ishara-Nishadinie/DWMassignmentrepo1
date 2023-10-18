@@ -1,0 +1,25 @@
+{
+	"name": "AzureSqlJunk",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabaseJunk",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Status_SK",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Order_Status",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Status"
+		}
+	}
+}

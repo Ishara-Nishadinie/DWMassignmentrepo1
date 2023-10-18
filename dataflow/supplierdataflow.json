@@ -1,0 +1,77 @@
+{
+	"name": "supplierdataflow",
+	"properties": {
+		"description": "dataflowtest1",
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "AzureSqlTableSupplier",
+						"type": "DatasetReference"
+					},
+					"name": "source",
+					"description": "Import data from AzureSqlTableSupplier"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "AzureSqlSinkTableSuliper",
+						"type": "DatasetReference"
+					},
+					"name": "SupplierSink"
+				}
+			],
+			"transformations": [
+				{
+					"name": "SupplierSKStream"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          Supplier_Code as string,",
+				"          Name as string,",
+				"          Region as string,",
+				"          Country as string,",
+				"          Type as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: true,",
+				"     inferDriftedColumnTypes: true,",
+				"     limit: 100,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> source",
+				"source keyGenerate(output(Supplier_SK as long),",
+				"     startAt: 1L,",
+				"     stepValue: 1L) ~> SupplierSKStream",
+				"SupplierSKStream sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          Supplier_SK as integer,",
+				"          Supplier_Code as string,",
+				"          Name as string,",
+				"          Region as string,",
+				"          Country as string,",
+				"          Type as string",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          Supplier_SK,",
+				"          Supplier_Code,",
+				"          Name,",
+				"          Region,",
+				"          Country,",
+				"          Type",
+				"     )) ~> SupplierSink"
+			]
+		}
+	}
+}

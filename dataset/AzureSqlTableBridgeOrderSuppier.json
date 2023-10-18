@@ -1,0 +1,25 @@
+{
+	"name": "AzureSqlTableBridgeOrderSuppier",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabaseBridgeOrderSupplier",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Order_Suppliers_SK",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Supplier_SK",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "BridgeOrderSupplier"
+		}
+	}
+}

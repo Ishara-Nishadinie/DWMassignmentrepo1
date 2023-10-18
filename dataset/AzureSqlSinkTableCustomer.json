@@ -1,0 +1,42 @@
+{
+	"name": "AzureSqlSinkTableCustomer",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabaseSinkCustomer",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Customer_SK",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Customer_ID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Region",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Country",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Type",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "Orders",
+			"table": "Customer"
+		}
+	}
+}

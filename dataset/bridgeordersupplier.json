@@ -1,0 +1,33 @@
+{
+	"name": "bridgeordersupplier",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "bridgesupplierorderblobstorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "DataSet - Orders_Suppliers.csv",
+				"folderPath": "input",
+				"container": "datafactory"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Order_Suppliers_SK",
+				"type": "String"
+			},
+			{
+				"name": "Supplier_SK",
+				"type": "String"
+			}
+		]
+	}
+}

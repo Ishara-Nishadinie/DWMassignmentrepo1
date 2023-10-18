@@ -1,0 +1,74 @@
+{
+	"name": "customerdataflow",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "AzureSqlCustomer",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "AzureSqlSinkTableCustomer",
+						"type": "DatasetReference"
+					},
+					"name": "CustomerSink"
+				}
+			],
+			"transformations": [
+				{
+					"name": "CustomerSKStream"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          Customer_Id as string,",
+				"          Name as string,",
+				"          Region as string,",
+				"          Country as string,",
+				"          Type as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: true,",
+				"     inferDriftedColumnTypes: true,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> source1",
+				"source1 keyGenerate(output(Customer_SK as long),",
+				"     startAt: 1L,",
+				"     stepValue: 1L) ~> CustomerSKStream",
+				"CustomerSKStream sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          Customer_SK as integer,",
+				"          Customer_ID as string,",
+				"          Name as string,",
+				"          Region as string,",
+				"          Country as string,",
+				"          Type as string",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          Customer_SK,",
+				"          Customer_ID = Customer_Id,",
+				"          Name,",
+				"          Region,",
+				"          Country,",
+				"          Type",
+				"     )) ~> CustomerSink"
+			]
+		}
+	}
+}
