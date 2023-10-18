@@ -59,7 +59,11 @@
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     errorHandlingOption: 'stopOnFirstError') ~> aggragatefactsink"
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          Order_Id,",
+				"          Total_USD = Total",
+				"     )) ~> aggragatefactsink"
 			]
 		}
 	}
