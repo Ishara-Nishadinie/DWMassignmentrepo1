@@ -5,7 +5,18 @@
 		"typeProperties": {
 			"sources": [
 				{
+					"dataset": {
+						"referenceName": "AzureSqlTableOrderFact",
+						"type": "DatasetReference"
+					},
 					"name": "source1"
+				},
+				{
+					"dataset": {
+						"referenceName": "AzureOrderFactSqlTableNew",
+						"type": "DatasetReference"
+					},
+					"name": "source2"
 				}
 			],
 			"sinks": [
@@ -19,10 +30,36 @@
 				}
 			],
 			"scriptLines": [
-				"source(allowSchemaDrift: true,",
+				"source(output(",
+				"          Order_Id as string,",
+				"          Quantity as integer,",
+				"          Unit_Cost as decimal(10,2),",
+				"          Product_ID as string,",
+				"          Customer_ID as string,",
+				"          Supplier_ID as string,",
+				"          Status as string,",
+				"          Order_Date as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
 				"     validateSchema: true,",
 				"     inferDriftedColumnTypes: true,",
-				"     limit: 9) ~> source1",
+				"     limit: 9,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> source1",
+				"source(output(",
+				"          Order_Id as string,",
+				"          Quantity as integer,",
+				"          Unit_Cost as decimal(10,2),",
+				"          Product_ID as string,",
+				"          Customer_ID as string,",
+				"          Supplier_ID as string,",
+				"          Status as string,",
+				"          Order_Date as date",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> source2",
 				"source1 aggregate(groupBy(Order_Id),",
 				"     Total = sum(Quantity*Unit_Cost)) ~> aggregatefactstream",
 				"aggregatefactstream sink(allowSchemaDrift: true,",
