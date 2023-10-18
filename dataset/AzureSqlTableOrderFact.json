@@ -13,26 +13,6 @@
 				"type": "nvarchar"
 			},
 			{
-				"name": "Product_SK",
-				"type": "nvarchar"
-			},
-			{
-				"name": "Customer_SK",
-				"type": "nvarchar"
-			},
-			{
-				"name": "Order_Date_SK",
-				"type": "nvarchar"
-			},
-			{
-				"name": "Order_Suppliers_SK",
-				"type": "nvarchar"
-			},
-			{
-				"name": "Status_SK",
-				"type": "nvarchar"
-			},
-			{
 				"name": "Quantity",
 				"type": "int",
 				"precision": 10
@@ -42,6 +22,26 @@
 				"type": "decimal",
 				"precision": 10,
 				"scale": 2
+			},
+			{
+				"name": "Product_ID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Customer_ID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Supplier_ID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Status",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Order_Date",
+				"type": "nvarchar"
 			}
 		],
 		"typeProperties": {
