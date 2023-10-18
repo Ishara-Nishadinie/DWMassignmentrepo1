@@ -107,7 +107,7 @@
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> sourcejunk",
-				"source1, sourcecustomer lookup(ERROR_FUNCTION('') == sourcecustomer@Customer_ID,",
+				"source1, sourcecustomer lookup(Customer_ID == Customer_SK,",
 				"     multiple: false,",
 				"     pickup: 'any',",
 				"     broadcast: 'auto')~> lookupcustomerSK",
