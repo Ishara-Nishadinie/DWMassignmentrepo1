@@ -21,11 +21,11 @@
 		},
 		"schema": [
 			{
-				"name": "Status_SK",
+				"name": "Statux_SK",
 				"type": "String"
 			},
 			{
-				"name": "Order_status",
+				"name": "Status",
 				"type": "String"
 			}
 		]
