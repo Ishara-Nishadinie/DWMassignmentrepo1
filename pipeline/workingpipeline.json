@@ -697,8 +697,8 @@
 								},
 								"sink": {
 									"name": "Order_Date",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"type": "DateTime",
+									"physicalType": "date"
 								}
 							}
 						],
