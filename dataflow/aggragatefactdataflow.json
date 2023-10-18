@@ -15,7 +15,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "aggragatefact",
+						"referenceName": "AzureSqlTableAggragateFact",
 						"type": "DatasetReference"
 					},
 					"name": "aggragatefactsink"
@@ -48,18 +48,18 @@
 				"aggregatefactstream sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
-				"          Order_ID as string,",
-				"          Product_ID as string,",
-				"          Customer_ID as string,",
-				"          Order_Date as string,",
-				"          Suppliers_ID as string,",
-				"          Status as string,",
-				"          Quantity as string,",
-				"          {Unit cost (USD)} as string,",
-				"          Total as string",
+				"          Order_Id as string,",
+				"          Customer_Id as string,",
+				"          Total_USD as decimal(10,2)",
 				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> aggragatefactsink"
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> aggragatefactsink"
 			]
 		}
 	}
