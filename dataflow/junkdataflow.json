@@ -14,6 +14,10 @@
 			],
 			"sinks": [
 				{
+					"dataset": {
+						"referenceName": "AzureSqlSinkJunkTable",
+						"type": "DatasetReference"
+					},
 					"name": "ProductSink"
 				}
 			],
@@ -37,8 +41,19 @@
 				"     stepValue: 1L) ~> JunkSKStream",
 				"JunkSKStream sink(allowSchemaDrift: true,",
 				"     validateSchema: true,",
+				"     input(",
+				"          Status_SK as integer,",
+				"          Status_id as string,",
+				"          Order_Status as string",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> ProductSink"
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> ProductSink"
 			]
 		}
 	}
