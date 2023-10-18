@@ -22,7 +22,10 @@
 			"sinks": [],
 			"transformations": [
 				{
-					"name": "join1"
+					"name": "joinOrderSupplier"
+				},
+				{
+					"name": "selectColumns"
 				}
 			],
 			"scriptLines": [
@@ -59,7 +62,25 @@
 				"     joinType:'inner',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
-				"     broadcast: 'auto')~> join1"
+				"     broadcast: 'auto')~> joinOrderSupplier",
+				"joinOrderSupplier select(mapColumn(",
+				"          Order_Id,",
+				"          Quantity,",
+				"          Unit_Cost,",
+				"          Product_ID,",
+				"          Customer_ID,",
+				"          Supplier_ID,",
+				"          Status,",
+				"          Order_Date,",
+				"          Supplier_SK,",
+				"          Supplier_Code,",
+				"          Name,",
+				"          Region,",
+				"          Country,",
+				"          Type",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> selectColumns"
 			]
 		}
 	}
