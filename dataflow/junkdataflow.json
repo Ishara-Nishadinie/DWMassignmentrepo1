@@ -55,6 +55,8 @@
 				"     skipDuplicateMapOutputs: true,",
 				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
+				"          Status_SK = JunkData_SK,",
+				"          Status_id = Status_SK,",
 				"          Order_Status",
 				"     )) ~> ProductSink"
 			]
