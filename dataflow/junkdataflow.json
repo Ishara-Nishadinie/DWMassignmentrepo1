@@ -6,7 +6,7 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "AzureSqlJunk",
+						"referenceName": "AzureSqlSinkJunkTable",
 						"type": "DatasetReference"
 					},
 					"name": "sourceJunk"
@@ -31,7 +31,7 @@
 			],
 			"scriptLines": [
 				"source(output(",
-				"          Status_SK as string,",
+				"          Status_SK as integer,",
 				"          Order_Status as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
