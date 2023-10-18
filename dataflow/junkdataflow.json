@@ -48,7 +48,7 @@
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> selectStatus",
 				"JunkSKStream sink(allowSchemaDrift: true,",
-				"     validateSchema: false,",
+				"     validateSchema: true,",
 				"     input(",
 				"          Status_SK as integer,",
 				"          Order_Status as string",
@@ -60,7 +60,11 @@
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     errorHandlingOption: 'stopOnFirstError') ~> Junksink"
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          Status_SK = JunkData_SK,",
+				"          Order_Status",
+				"     )) ~> Junksink"
 			]
 		}
 	}
