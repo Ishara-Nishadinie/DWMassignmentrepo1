@@ -100,7 +100,7 @@
 				"          Customer_ID as string,",
 				"          Supplier_ID as string,",
 				"          Status as string,",
-				"          Order_Date as string",
+				"          Order_Date as date",
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
