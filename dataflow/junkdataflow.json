@@ -14,7 +14,7 @@
 			],
 			"sinks": [
 				{
-					"name": "sink1"
+					"name": "ProductSink"
 				}
 			],
 			"transformations": [
@@ -36,9 +36,9 @@
 				"     startAt: 1L,",
 				"     stepValue: 1L) ~> JunkSKStream",
 				"JunkSKStream sink(allowSchemaDrift: true,",
-				"     validateSchema: false,",
+				"     validateSchema: true,",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink1"
+				"     skipDuplicateMapOutputs: true) ~> ProductSink"
 			]
 		}
 	}
