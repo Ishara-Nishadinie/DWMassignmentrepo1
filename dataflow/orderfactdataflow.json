@@ -116,7 +116,7 @@
 				"          Quantity,",
 				"          Unit_Cost,",
 				"          Product_ID,",
-				"          Customer_SK = Status,",
+				"          Customer_SK,",
 				"          Supplier_ID,",
 				"          Status,",
 				"          Order_Date,",
@@ -152,7 +152,7 @@
 				"          Unit_Cost,",
 				"          Customer_SK,",
 				"          Product_SK,",
-				"          Status_SK",
+				"          Status_SK = sourcejunk@Status_SK",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select3"
