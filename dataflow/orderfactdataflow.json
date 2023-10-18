@@ -33,7 +33,11 @@
 					"name": "sourcejunk"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"name": "sink1"
+				}
+			],
 			"transformations": [
 				{
 					"name": "lookupcustomerSK"
@@ -140,7 +144,11 @@
 				"select2, sourcejunk lookup(Status == Order_Status,",
 				"     multiple: false,",
 				"     pickup: 'any',",
-				"     broadcast: 'auto')~> lookupjunkSK"
+				"     broadcast: 'auto')~> lookupjunkSK",
+				"lookupjunkSK sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
 			]
 		}
 	}
