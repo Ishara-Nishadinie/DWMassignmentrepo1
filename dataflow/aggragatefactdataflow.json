@@ -14,6 +14,10 @@
 			],
 			"sinks": [
 				{
+					"dataset": {
+						"referenceName": "aggragatefact",
+						"type": "DatasetReference"
+					},
 					"name": "aggragatefactsink"
 				}
 			],
@@ -43,6 +47,11 @@
 				"     Total = sum(Quantity*Unit_Cost)) ~> aggregatefactstream",
 				"aggregatefactstream sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
+				"     input(",
+				"          Order_Id as string,",
+				"          Customer_Id as string,",
+				"          {Total (USD)} as string",
+				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> aggragatefactsink"
 			]
