@@ -35,6 +35,10 @@
 			],
 			"sinks": [
 				{
+					"dataset": {
+						"referenceName": "AzureSqlTableSinkOrderFact",
+						"type": "DatasetReference"
+					},
 					"name": "sink1"
 				}
 			],
@@ -147,8 +151,32 @@
 				"     broadcast: 'auto')~> lookupjunkSK",
 				"lookupjunkSK sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
+				"     input(",
+				"          Order_Id as string,",
+				"          Product_SK as integer,",
+				"          Customer_SK as integer,",
+				"          Order_Date_SK as integer,",
+				"          Suppliers_SK as integer,",
+				"          Status_SK as integer,",
+				"          Quantity as integer,",
+				"          Unit_Cost as decimal(10,2)",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink1"
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          Order_Id,",
+				"          Product_SK,",
+				"          Customer_SK,",
+				"          Status_SK,",
+				"          Quantity,",
+				"          Unit_Cost",
+				"     )) ~> sink1"
 			]
 		}
 	}
