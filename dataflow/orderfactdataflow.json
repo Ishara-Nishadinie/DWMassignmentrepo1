@@ -6,7 +6,7 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "AzureOrderFactSqlTableNew",
+						"referenceName": "AzureSqlTableOrderFact",
 						"type": "DatasetReference"
 					},
 					"name": "sourceOredrTemp"
@@ -239,9 +239,7 @@
 				"     multiple: false,",
 				"     pickup: 'any',",
 				"     broadcast: 'auto')~> lookupdate",
-				"select4 derive(Order_Date = concat(split(Order_Date, '/')[2], split(Order_Date, '/')[0], split(Order_Date, '/')[1])\r",
-				"\r",
-				") ~> derivedColumn1",
+				"select4 derive(Order_Date = concat(split(Order_Date, '/')[2], split(Order_Date, '/')[0], split(Order_Date, '/')[1])) ~> derivedColumn1",
 				"lookupdate sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
