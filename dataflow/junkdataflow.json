@@ -29,7 +29,7 @@
 					"name": "selectStatus"
 				},
 				{
-					"name": "derivedColumn1"
+					"name": "TrimStatusColumn"
 				}
 			],
 			"scriptLines": [
@@ -50,8 +50,8 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> selectStatus",
-				"JunkSKStream derive(Order_Status = trim(Order_Status)) ~> derivedColumn1",
-				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"JunkSKStream derive(Order_Status = trim(Order_Status)) ~> TrimStatusColumn",
+				"TrimStatusColumn sink(allowSchemaDrift: true,",
 				"     validateSchema: true,",
 				"     input(",
 				"          Status_SK as integer,",
