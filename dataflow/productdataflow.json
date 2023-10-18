@@ -23,16 +23,12 @@
 			],
 			"transformations": [
 				{
-					"name": "selectcolumns"
-				},
-				{
 					"name": "ProductSKStream"
 				}
 			],
 			"scriptLines": [
 				"source(output(",
 				"          Product_Id as string,",
-				"          Product_SK as string,",
 				"          Name as string,",
 				"          Fabric_Type as string,",
 				"          Size_Range as string,",
@@ -45,18 +41,7 @@
 				"     inferDriftedColumnTypes: true,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> source1",
-				"source1 select(mapColumn(",
-				"          Product_Id,",
-				"          Name,",
-				"          Fabric_Type,",
-				"          Size_Range,",
-				"          Color,",
-				"          Category,",
-				"          Unit_Cost",
-				"     ),",
-				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> selectcolumns",
-				"selectcolumns keyGenerate(output(Product_SK as long),",
+				"source1 keyGenerate(output(Product_SK as long),",
 				"     startAt: 1L,",
 				"     stepValue: 1L) ~> ProductSKStream",
 				"ProductSKStream sink(allowSchemaDrift: true,",

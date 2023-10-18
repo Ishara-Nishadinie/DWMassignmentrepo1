@@ -9,7 +9,7 @@
 						"referenceName": "AzureSqlJunk",
 						"type": "DatasetReference"
 					},
-					"name": "source1"
+					"name": "sourceJunk"
 				}
 			],
 			"sinks": [
@@ -24,6 +24,9 @@
 			"transformations": [
 				{
 					"name": "JunkSKStream"
+				},
+				{
+					"name": "selectStatus"
 				}
 			],
 			"scriptLines": [
@@ -35,10 +38,15 @@
 				"     validateSchema: true,",
 				"     inferDriftedColumnTypes: true,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
-				"     format: 'table') ~> source1",
-				"source1 keyGenerate(output(JunkData_SK as long),",
+				"     format: 'table') ~> sourceJunk",
+				"selectStatus keyGenerate(output(JunkData_SK as long),",
 				"     startAt: 1L,",
 				"     stepValue: 1L) ~> JunkSKStream",
+				"sourceJunk select(mapColumn(",
+				"          Order_Status",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> selectStatus",
 				"JunkSKStream sink(allowSchemaDrift: true,",
 				"     validateSchema: true,",
 				"     input(",
@@ -56,7 +64,6 @@
 				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
 				"          Status_SK = JunkData_SK,",
-				"          Status_id = Status_SK,",
 				"          Order_Status",
 				"     )) ~> ProductSink"
 			]
