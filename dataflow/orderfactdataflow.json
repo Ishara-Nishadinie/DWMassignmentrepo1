@@ -49,9 +49,6 @@
 				},
 				{
 					"name": "lookupjunkSK"
-				},
-				{
-					"name": "select3"
 				}
 			],
 			"scriptLines": [
@@ -143,19 +140,7 @@
 				"select2, sourcejunk lookup(Status == Status_SK,",
 				"     multiple: false,",
 				"     pickup: 'any',",
-				"     broadcast: 'auto')~> lookupjunkSK",
-				"lookupjunkSK select(mapColumn(",
-				"          Order_Id,",
-				"          Order_Date_SK,",
-				"          Order_Suppliers_SK,",
-				"          Quantity,",
-				"          Unit_Cost,",
-				"          Customer_SK,",
-				"          Product_SK,",
-				"          Status_SK",
-				"     ),",
-				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select3"
+				"     broadcast: 'auto')~> lookupjunkSK"
 			]
 		}
 	}
