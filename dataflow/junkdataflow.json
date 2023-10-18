@@ -27,6 +27,9 @@
 				},
 				{
 					"name": "selectStatus"
+				},
+				{
+					"name": "derivedColumn1"
 				}
 			],
 			"scriptLines": [
@@ -47,7 +50,8 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> selectStatus",
-				"JunkSKStream sink(allowSchemaDrift: true,",
+				"JunkSKStream derive(Order_Status = ERROR_FUNCTION('')) ~> derivedColumn1",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: true,",
 				"     input(",
 				"          Status_SK as integer,",
