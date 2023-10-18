@@ -616,11 +616,6 @@
 								}
 							},
 							{
-								"source": {
-									"name": "Name",
-									"type": "String",
-									"physicalType": "String"
-								},
 								"sink": {
 									"name": "Name",
 									"type": "String",
@@ -628,11 +623,6 @@
 								}
 							},
 							{
-								"source": {
-									"name": "Fabric_Type",
-									"type": "String",
-									"physicalType": "String"
-								},
 								"sink": {
 									"name": "Fabric_Type",
 									"type": "String",
@@ -640,11 +630,6 @@
 								}
 							},
 							{
-								"source": {
-									"name": "Size_Range",
-									"type": "String",
-									"physicalType": "String"
-								},
 								"sink": {
 									"name": "Size_Range",
 									"type": "String",
@@ -652,11 +637,6 @@
 								}
 							},
 							{
-								"source": {
-									"name": "Color",
-									"type": "String",
-									"physicalType": "String"
-								},
 								"sink": {
 									"name": "Color",
 									"type": "String",
@@ -664,11 +644,6 @@
 								}
 							},
 							{
-								"source": {
-									"name": "Category",
-									"type": "String",
-									"physicalType": "String"
-								},
 								"sink": {
 									"name": "Category",
 									"type": "String",
@@ -694,7 +669,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "csvproduct",
+						"referenceName": "csvorder",
 						"type": "DatasetReference"
 					}
 				],
