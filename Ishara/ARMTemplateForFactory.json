@@ -861,8 +861,8 @@
 										},
 										"sink": {
 											"name": "Order_Date",
-											"type": "String",
-											"physicalType": "nvarchar"
+											"type": "DateTime",
+											"physicalType": "date"
 										}
 									}
 								],
@@ -2477,7 +2477,11 @@
 						"     format: 'table',",
 						"     skipDuplicateMapInputs: true,",
 						"     skipDuplicateMapOutputs: true,",
-						"     errorHandlingOption: 'stopOnFirstError') ~> aggragatefactsink"
+						"     errorHandlingOption: 'stopOnFirstError',",
+						"     mapColumn(",
+						"          Order_Id,",
+						"          Total_USD = Total",
+						"     )) ~> aggragatefactsink"
 					]
 				}
 			},
@@ -2826,7 +2830,6 @@
 						"          Quantity,",
 						"          Unit_Cost,",
 						"          Product_ID,",
-						"          Customer_SK,",
 						"          Supplier_ID,",
 						"          Status,",
 						"          Order_Date,",
